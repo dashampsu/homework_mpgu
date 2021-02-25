@@ -9,6 +9,7 @@ public class DynamicArray<T> {
     // .......... ошибки ..........
     public static String outOfBorderError = "Выход за границы массива";
     public static String wrongArraySizeError = "Массив должен быть больше 1";
+    public static String elementNotFoundError = "Такого элемента не существует";
 
     public DynamicArray() {
         list = (T[]) new Object[defaultSize];
@@ -52,5 +53,14 @@ public class DynamicArray<T> {
         }
 
         list[index] = value;
+    }
+
+    public int findFirst(T value) {
+
+        for (int i=0; i < list.length; i++) {
+            if (list[i] == value) { return i; }
+        }
+
+        throw new RuntimeException(elementNotFoundError);
     }
 }

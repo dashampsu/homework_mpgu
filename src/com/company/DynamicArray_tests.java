@@ -43,7 +43,7 @@ public class DynamicArray_tests extends Assert {
         DynamicArray array = new DynamicArray(10);
         int expected = 5;
 
-        array.resize(5);
+        array.resize(expected);
 
         int actual = array.getsize();
         assertEquals(expected, actual);
@@ -68,7 +68,7 @@ public class DynamicArray_tests extends Assert {
     }
 
     @Test
-    public void reSize_value() {
+    public void reSize_valueValidation() {
         DynamicArray array = new DynamicArray(10);
         String expected = "ama here";
 
@@ -160,5 +160,47 @@ public class DynamicArray_tests extends Assert {
         int index = array.getsize() + 1;
 
         array.set(index, 55);
+    }
+
+    @Test
+    public void findFirst_int() {
+        DynamicArray array = new DynamicArray(10);
+        int expected = 5;
+
+        for (int i=0; i < array.getsize(); i++) {
+            array.set(i, "empty");
+        }
+
+        array.set(expected, 10);
+
+        int actual = array.findFirst(10);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findFirst_int_multiple() {
+        DynamicArray array = new DynamicArray(10);
+        int expected = 5;
+
+        for (int i=0; i < array.getsize(); i++) {
+            array.set(i, "empty");
+        }
+
+        array.set(expected, 10);
+        array.set(expected + 1, 10);
+
+        int actual = array.findFirst(10);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findFirst_NotExisting() throws RuntimeException {
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.elementNotFoundError);
+
+        DynamicArray array = new DynamicArray();
+        array.findFirst("f");
+
     }
 }
