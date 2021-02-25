@@ -374,3 +374,5 @@ public class DynamicArray_tests extends Assert {
         array.remove(index);
     }
 }
+
+// done
