@@ -203,4 +203,46 @@ public class DynamicArray_tests extends Assert {
         array.findFirst("f");
 
     }
+
+    @Test
+    public void findLast_int() {
+        DynamicArray array = new DynamicArray(10);
+        int expected = 5;
+
+        for (int i=0; i < array.getsize(); i++) {
+            array.set(i, "empty");
+        }
+
+        array.set(expected, 10);
+
+        int actual = array.findLast(10);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findLast_int_multiple() {
+        DynamicArray array = new DynamicArray(10);
+        int expected = 5;
+
+        for (int i=0; i < array.getsize(); i++) {
+            array.set(i, "empty");
+        }
+
+        array.set(expected, 10);
+        array.set(expected - 1, 10);
+
+        int actual = array.findLast(10);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findLast_NotExisting() throws RuntimeException {
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.elementNotFoundError);
+
+        DynamicArray array = new DynamicArray();
+        array.findLast(1);
+
+    }
 }

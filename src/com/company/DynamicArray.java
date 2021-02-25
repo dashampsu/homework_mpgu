@@ -63,4 +63,20 @@ public class DynamicArray<T> {
 
         throw new RuntimeException(elementNotFoundError);
     }
+
+    public int findLast(T value) {
+
+        int last_index = -1;
+        for (int i=0; i < list.length; i++) {
+            if (list[i] == value) {
+                last_index = i;
+            }
+        }
+
+        if (last_index >= 0) {
+            return last_index;
+        }
+
+        throw new RuntimeException(elementNotFoundError);
+    }
 }
