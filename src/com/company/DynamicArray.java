@@ -12,7 +12,21 @@ public class DynamicArray<T> {
         list = (T[]) new Object[size];
     }
 
-    public int size() {
+    public int getsize() {
         return list.length;
     }
+
+    public void resize(int newSize) {
+        T[] newList = (T[]) new Object[newSize];
+
+        int counter = 0;
+        for (T item : newList) {
+            item = list[counter];
+            counter++;
+        }
+
+        list = newList;
+    }
+
+
 }

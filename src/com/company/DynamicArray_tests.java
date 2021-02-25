@@ -13,7 +13,7 @@ public class DynamicArray_tests extends Assert {
         DynamicArray array = new DynamicArray();
         int expected = array.defaultSize;
 
-        int actual = array.size();
+        int actual = array.getsize();
         assertEquals(expected, actual);
     }
 
@@ -22,17 +22,27 @@ public class DynamicArray_tests extends Assert {
         DynamicArray array = new DynamicArray(10);
         int expected = 10;
 
-        int actual = array.size();
+        int actual = array.getsize();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void size() {
+    public void getSize() {
         DynamicArray array = new DynamicArray();
         int expected = 2;
 
         int actual = array.list.length;
+        assertEquals(expected, actual);
+    }
 
+    @Test
+    public void reSize() {
+        DynamicArray array = new DynamicArray(10);
+        int expected = 5;
+
+        array.resize(5);
+
+        int actual = array.getsize();
         assertEquals(expected, actual);
     }
 }
