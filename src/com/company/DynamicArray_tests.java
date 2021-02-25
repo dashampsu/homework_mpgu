@@ -277,4 +277,51 @@ public class DynamicArray_tests extends Assert {
         Object actual = array.get(10);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void insert_int_index() {
+        DynamicArray array = new DynamicArray(10);
+        int expected = 6;
+
+        array.set(5, "find me");
+        array.insert(5, "something");
+
+        int actual = array.findFirst("find me");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void insert_int_value() {
+        DynamicArray array = new DynamicArray(10);
+        int expected = 22222;
+
+        array.set(5, expected);
+        array.insert(5, "something");
+
+        Object actual = array.get(6);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void insert_negative() throws RuntimeException {
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.outOfBorderError);
+
+        DynamicArray array = new DynamicArray();
+        array.insert(-1, 55);
+    }
+
+    @Test
+    public void insert_greaterThanLength() throws RuntimeException {
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.outOfBorderError);
+
+        DynamicArray array = new DynamicArray();
+
+        int index = array.getsize() + 1;
+
+        array.insert(index, 55);
+    }
 }

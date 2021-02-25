@@ -91,9 +91,21 @@ public class DynamicArray<T> {
     }
 
     public void add(T value) {
+        resize(list.length + 1);
+        list[list.length - 1] = value;
+    }
+
+    public void insert(int index, T value) {
+        if (index < 0 || index > list.length) {
+            throw new RuntimeException(outOfBorderError);
+        }
 
         resize(list.length + 1);
 
-        list[list.length - 1] = value;
+        for (int i = list.length - 1; i > index; i--) {
+            list[i] = list[i-1];
+        }
+
+        set(index, value);
     }
 }
