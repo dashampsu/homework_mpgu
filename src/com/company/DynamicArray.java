@@ -7,18 +7,30 @@ public class DynamicArray<T> {
     public int defaultSize = 2;
 
     // .......... ошибки ..........
-    public static String wrongArraySizeError = "Размер массива должен быть не меньше 1";
+    public static String wrongArraySizeError = "Выход за границы массива";
 
     public DynamicArray() {
         list = (T[]) new Object[defaultSize];
     }
 
     public DynamicArray(int size) {
+        if (size < 1) {
+            throw new RuntimeException(wrongArraySizeError);
+        }
+
         list = (T[]) new Object[size];
     }
 
     public int getsize() {
         return list.length;
+    }
+
+    public T get(int index) {
+        if (index < 0) {
+            throw new RuntimeException(wrongArraySizeError);
+        }
+
+        return list[index];
     }
 
     public void resize(int newSize) {
@@ -28,14 +40,18 @@ public class DynamicArray<T> {
 
         T[] newList = (T[]) new Object[newSize];
 
-        int counter = 0;
-        for (T item : newList) {
-            item = list[counter];
-            counter++;
+        for (int i=0; i < newSize; i++) {
+            newList[i] = list[i];
         }
 
         list = newList;
     }
 
+    public void set(int index, T value) {
+        if (index < 0 || index > list.length) {
+            throw new RuntimeException(wrongArraySizeError);
+        }
 
+        list[index] = value;
+    }
 }

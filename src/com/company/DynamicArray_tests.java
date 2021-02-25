@@ -69,12 +69,13 @@ public class DynamicArray_tests extends Assert {
 
     @Test
     public void reSize_value() {
-//        DynamicArray array = new DynamicArray(10);
-//        String expected = "ama here";
-//
-//        array.resize(5);
-//
-//        int actual = array.getsize();
-//        assertEquals(expected, actual);
+        DynamicArray array = new DynamicArray(10);
+        String expected = "ama here";
+
+        array.set(0, "ama here");
+        array.resize(5);
+
+        Object actual = array.get(0);
+        assertEquals(expected, actual);
     }
 }
