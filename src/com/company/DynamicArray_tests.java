@@ -39,7 +39,7 @@ public class DynamicArray_tests extends Assert {
     }
 
     @Test
-    public void reSize_length() {
+    public void resize_smaller_length() {
         DynamicArray array = new DynamicArray(10);
         int expected = 5;
 
@@ -50,7 +50,18 @@ public class DynamicArray_tests extends Assert {
     }
 
     @Test
-    public void reSize_negative() throws RuntimeException {
+    public void resize_bigger_length() {
+        DynamicArray array = new DynamicArray(10);
+        int expected = 11;
+
+        array.resize(expected);
+
+        int actual = array.getsize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void resize_negative() throws RuntimeException {
 
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DynamicArray.wrongArraySizeError);
@@ -59,7 +70,7 @@ public class DynamicArray_tests extends Assert {
     }
 
     @Test
-    public void reSize_zero() throws RuntimeException {
+    public void resize_zero() throws RuntimeException {
 
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DynamicArray.wrongArraySizeError);
@@ -68,7 +79,7 @@ public class DynamicArray_tests extends Assert {
     }
 
     @Test
-    public void reSize_valueValidation() {
+    public void resize_valueValidation() {
         DynamicArray array = new DynamicArray(10);
         String expected = "ama here";
 
@@ -243,6 +254,27 @@ public class DynamicArray_tests extends Assert {
 
         DynamicArray array = new DynamicArray();
         array.findLast(1);
+    }
 
+    @Test
+    public void add_int_index() {
+        DynamicArray array = new DynamicArray(10);
+        int expected = 11;
+
+        array.add(3);
+
+        int actual = array.getsize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void add_int_value() {
+        DynamicArray array = new DynamicArray(10);
+        int expected = 4332;
+
+        array.add(expected);
+
+        Object actual = array.get(10);
+        assertEquals(expected, actual);
     }
 }

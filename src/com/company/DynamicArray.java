@@ -36,13 +36,23 @@ public class DynamicArray<T> {
     }
 
     public void resize(int newSize) {
+
+        // ... проверка на отрицательный массив ...
         if (newSize < 1) {
             throw new RuntimeException(wrongArraySizeError);
         }
 
+        // ... создаём новый список объектов ...
         T[] newList = (T[]) new Object[newSize];
 
-        System.arraycopy(list, 0, newList, 0, newSize);
+        // ... устанавливаем границы, когда должен остановитсья счётчик ...
+        int iUpperBound = newSize;
+        if (newSize > list.length) {
+            iUpperBound = list.length;
+        }
+
+        // ... копируем массив ...
+        System.arraycopy(list, 0, newList, 0, iUpperBound);
 
         list = newList;
     }
@@ -78,5 +88,12 @@ public class DynamicArray<T> {
         }
 
         throw new RuntimeException(elementNotFoundError);
+    }
+
+    public void add(T value) {
+
+        resize(list.length + 1);
+
+        list[list.length - 1] = value;
     }
 }
