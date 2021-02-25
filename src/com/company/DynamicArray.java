@@ -41,9 +41,7 @@ public class DynamicArray<T> {
 
         T[] newList = (T[]) new Object[newSize];
 
-        for (int i=0; i < newSize; i++) {
-            newList[i] = list[i];
-        }
+        System.arraycopy(list, 0, newList, 0, newSize);
 
         list = newList;
     }
