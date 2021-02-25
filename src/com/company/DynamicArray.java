@@ -7,7 +7,8 @@ public class DynamicArray<T> {
     public int defaultSize = 2;
 
     // .......... ошибки ..........
-    public static String wrongArraySizeError = "Выход за границы массива";
+    public static String outOfBorderError = "Выход за границы массива";
+    public static String wrongArraySizeError = "Массив должен быть больше 1";
 
     public DynamicArray() {
         list = (T[]) new Object[defaultSize];
@@ -26,8 +27,8 @@ public class DynamicArray<T> {
     }
 
     public T get(int index) {
-        if (index < 0) {
-            throw new RuntimeException(wrongArraySizeError);
+        if (index < 0 || index > list.length) {
+            throw new RuntimeException(outOfBorderError);
         }
 
         return list[index];
@@ -49,7 +50,7 @@ public class DynamicArray<T> {
 
     public void set(int index, T value) {
         if (index < 0 || index > list.length) {
-            throw new RuntimeException(wrongArraySizeError);
+            throw new RuntimeException(outOfBorderError);
         }
 
         list[index] = value;

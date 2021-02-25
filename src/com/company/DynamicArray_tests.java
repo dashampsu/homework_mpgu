@@ -30,7 +30,7 @@ public class DynamicArray_tests extends Assert {
     }
 
     @Test
-    public void getSize() {
+    public void getSize_int() {
         DynamicArray array = new DynamicArray();
         int expected = 2;
 
@@ -50,7 +50,7 @@ public class DynamicArray_tests extends Assert {
     }
 
     @Test
-    public void reSize_length_negative() throws RuntimeException {
+    public void reSize_negative() throws RuntimeException {
 
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DynamicArray.wrongArraySizeError);
@@ -59,7 +59,7 @@ public class DynamicArray_tests extends Assert {
     }
 
     @Test
-    public void reSize_length_zero() throws RuntimeException {
+    public void reSize_zero() throws RuntimeException {
 
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DynamicArray.wrongArraySizeError);
@@ -72,10 +72,93 @@ public class DynamicArray_tests extends Assert {
         DynamicArray array = new DynamicArray(10);
         String expected = "ama here";
 
-        array.set(0, "ama here");
+        array.set(0, expected);
         array.resize(5);
 
         Object actual = array.get(0);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void get() {
+        DynamicArray array = new DynamicArray(10);
+        String expected = "ama here";
+
+        array.set(0, expected);
+
+        Object actual = array.get(0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void get_negative() throws RuntimeException {
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.outOfBorderError);
+
+        DynamicArray array = new DynamicArray();
+        array.get(-1);
+    }
+
+    @Test
+    public void get_greaterThanLength() throws RuntimeException {
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.outOfBorderError);
+
+        DynamicArray array = new DynamicArray();
+
+        int index = array.getsize() + 1;
+
+        array.get(index);
+    }
+
+    @Test
+    public void set_int() {
+        DynamicArray array = new DynamicArray(10);
+        String expected = "ama here";
+
+        array.set(0, expected);
+
+        Object actual = array.get(0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void set_multipleTypes() {
+        DynamicArray array = new DynamicArray(10);
+        String expected = "ama here";
+        int expected2 = 2;
+
+        array.set(0, expected);
+        array.set(1, expected2);
+
+        Object actual = array.get(0);
+        Object actual2 = array.get(1);
+        assertEquals(expected, actual);
+        assertEquals(expected2, actual2);
+    }
+
+    @Test
+    public void set_negative() throws RuntimeException {
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.outOfBorderError);
+
+        DynamicArray array = new DynamicArray();
+        array.set(-1, 55);
+    }
+
+    @Test
+    public void set_greaterThanLength() throws RuntimeException {
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.outOfBorderError);
+
+        DynamicArray array = new DynamicArray();
+
+        int index = array.getsize() + 1;
+
+        array.set(index, 55);
     }
 }
