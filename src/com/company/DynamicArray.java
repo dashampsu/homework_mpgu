@@ -108,4 +108,25 @@ public class DynamicArray<T> {
 
         set(index, value);
     }
+
+    public void remove(int index) {
+        if (index < 0 || index > list.length) {
+            throw new RuntimeException(outOfBorderError);
+        }
+
+        T[] newList = (T[]) new Object[list.length - 1];
+
+
+        // ... копируем до индекса не включительно ...
+        for (int i=0; i < index; i++) {
+            newList[i] = list[i];
+        }
+
+        // ... копируем после индекса ...
+        for (int i=index+1; i < list.length; i++) {
+            newList[i-1] = list[i];
+        }
+
+        list = newList;
+    }
 }
