@@ -8,6 +8,9 @@ import org.junit.rules.ExpectedException;
 
 public class DynamicArray_tests extends Assert {
 
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
     @Test
     public void init_sizeDefault() {
         DynamicArray array = new DynamicArray();
@@ -36,7 +39,7 @@ public class DynamicArray_tests extends Assert {
     }
 
     @Test
-    public void reSize() {
+    public void reSize_length() {
         DynamicArray array = new DynamicArray(10);
         int expected = 5;
 
@@ -44,5 +47,34 @@ public class DynamicArray_tests extends Assert {
 
         int actual = array.getsize();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reSize_length_negative() throws RuntimeException {
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.wrongArraySizeError);
+
+        DynamicArray array = new DynamicArray(-1);
+    }
+
+    @Test
+    public void reSize_length_zero() throws RuntimeException {
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.wrongArraySizeError);
+
+        DynamicArray array = new DynamicArray(0);
+    }
+
+    @Test
+    public void reSize_value() {
+//        DynamicArray array = new DynamicArray(10);
+//        String expected = "ama here";
+//
+//        array.resize(5);
+//
+//        int actual = array.getsize();
+//        assertEquals(expected, actual);
     }
 }
