@@ -7,4 +7,8 @@ public class DynamicArray<T> {
     public DynamicArray() {
         list = (T[]) new Object[defaultSize];
     }
+
+    public DynamicArray(int size) {
+        list = (T[]) new Object[size];
+    }
 }
