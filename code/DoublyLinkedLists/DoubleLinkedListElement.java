@@ -39,4 +39,8 @@ public class DoubleLinkedListElement {
     public void elementSetNext(DoubleLinkedListElement next) {
         this.next = next;
     }
+
+    public DoubleLinkedListElement elementGetPrev() {
+        return prev;
+    }
 }
