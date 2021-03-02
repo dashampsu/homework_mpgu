@@ -23,4 +23,8 @@ public class DoubleLinkedListElement {
         this.data = data;
         this.next = next;
     }
+
+    public Object getData() {
+        return data;
+    }
 }
