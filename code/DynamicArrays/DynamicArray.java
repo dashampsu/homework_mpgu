@@ -1,4 +1,4 @@
-package com.company;
+package DynamicArrays;
 
 public class DynamicArray<T> {
 

@@ -1,4 +1,4 @@
-package com.company;
+package DynamicArrays;
 
 import org.junit.Assert;
 import org.junit.Rule;
