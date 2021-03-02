@@ -31,4 +31,8 @@ public class DoubleLinkedListElement {
     public void setData(Object data) {
         this.data = data;
     }
+
+    public DoubleLinkedListElement elementGetNext() {
+        return next;
+    }
 }
