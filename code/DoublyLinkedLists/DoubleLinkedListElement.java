@@ -43,4 +43,8 @@ public class DoubleLinkedListElement {
     public DoubleLinkedListElement elementGetPrev() {
         return prev;
     }
+
+    public void elementSetPrev(DoubleLinkedListElement prev) {
+        this.prev = prev;
+    }
 }
