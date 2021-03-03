@@ -5,6 +5,9 @@ public class DoubleLinkedList {
     DoubleLinkedListElement tail;
     int size = 0;
 
+    // ...... ошибки ......
+    public static String listIsEmptyError = "список пустой";
+
     public Boolean isEmpty() {
         if (size > 0) {
             return false;
@@ -43,28 +46,36 @@ public class DoubleLinkedList {
         size++;
     }
 
-    public void printAll() {
-        if (!isEmpty()) {
-            DoubleLinkedListElement iterator = tail;
-            iterator.elementSetPrev(tail.elementGetPrev());
+    public Boolean contains(int data) {
+        boolean contains = false;
+        DoubleLinkedListElement iterator = head;
 
-            while (iterator.elementGetPrev() != null) {
-                System.out.print(iterator.getData() + " ");
-                iterator = iterator.elementGetPrev();
+        while (iterator.elementGetNext() != null) {
+            if (iterator.data == data) {
+                contains = true;
             }
-            System.out.println(iterator.getData());
-            return;
+            iterator = iterator.elementGetNext();
         }
 
-        // если лист не пустой
+        if (iterator.data == data) {
+            contains = true;
+        }
+
+        return contains;
+    }
+
+    public void printAll() {
+        if (isEmpty()) {
+            throw new RuntimeException(listIsEmptyError);
+        }
 
         DoubleLinkedListElement iterator = head;
         iterator.elementSetNext(head.elementGetNext());
 
-        while (iterator.elementGetNext() != null) {
+        while (iterator.elementGetPrev() != null) {
             System.out.print(iterator.getData() + " ");
-            iterator = iterator.elementGetNext();
+            iterator = iterator.elementGetPrev();
         }
-        System.out.print(iterator.getData());
+        System.out.println(iterator.getData());
     }
 }

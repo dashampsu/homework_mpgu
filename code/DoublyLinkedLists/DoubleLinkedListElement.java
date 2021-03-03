@@ -3,7 +3,7 @@ package DoublyLinkedLists;
 public class DoubleLinkedListElement {
     DoubleLinkedListElement next;
     DoubleLinkedListElement prev;
-    int  data;
+    int data;
 
     DoubleLinkedListElement() {
 
