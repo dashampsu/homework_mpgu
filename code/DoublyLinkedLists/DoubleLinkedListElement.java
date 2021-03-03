@@ -3,22 +3,17 @@ package DoublyLinkedLists;
 public class DoubleLinkedListElement {
     DoubleLinkedListElement next;
     DoubleLinkedListElement prev;
-    Object data;
+    int  data;
 
     DoubleLinkedListElement() {
 
     }
 
-    DoubleLinkedListElement(Object data) {
+    DoubleLinkedListElement(int data) {
         this.data = data;
     }
 
-    DoubleLinkedListElement(DoubleLinkedListElement prev, Object data) {
-        this.prev = prev;
-        this.data = data;
-    }
-
-    DoubleLinkedListElement(DoubleLinkedListElement prev, Object data, DoubleLinkedListElement next) {
+    DoubleLinkedListElement(DoubleLinkedListElement prev, int data, DoubleLinkedListElement next) {
         this.prev = prev;
         this.data = data;
         this.next = next;
@@ -28,7 +23,7 @@ public class DoubleLinkedListElement {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(int data) {
         this.data = data;
     }
 
