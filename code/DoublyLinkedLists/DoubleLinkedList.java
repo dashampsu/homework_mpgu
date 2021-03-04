@@ -12,7 +12,6 @@ public class DoubleLinkedList {
         if (size > 0) {
             return false;
         }
-
         return true;
     }
 
@@ -50,17 +49,16 @@ public class DoubleLinkedList {
         boolean contains = false;
         DoubleLinkedListElement iterator = head;
 
-        while (iterator.elementGetNext() != null) {
+        while (iterator != null && iterator.elementGetNext() != null) {
             if (iterator.data == data) {
                 contains = true;
             }
             iterator = iterator.elementGetNext();
         }
 
-        if (iterator.data == data) {
+        if (!isEmpty() && iterator.data == data) {
             contains = true;
         }
-
         return contains;
     }
 
