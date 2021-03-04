@@ -215,7 +215,7 @@ public class DoubleLinkedListTests extends Assert {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DoubleLinkedList.outOfRangeError);
 
-        DoubleLinkedList linky = new DoubleLinkedList(); // todo
+        DoubleLinkedList linky = new DoubleLinkedList();
 
         linky.append(1);
         linky.append(2);
@@ -230,7 +230,7 @@ public class DoubleLinkedListTests extends Assert {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DoubleLinkedList.outOfRangeError);
 
-        DoubleLinkedList linky = new DoubleLinkedList(); // todo
+        DoubleLinkedList linky = new DoubleLinkedList();
 
         linky.append(1);
         linky.append(2);
@@ -240,4 +240,65 @@ public class DoubleLinkedListTests extends Assert {
         linky.getValueByIndex(100);
     }
 
+    @Test
+    public void setValueByIndex_FirstIndex() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 100;
+
+        linky.append(0);
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+
+        linky.setValueByIndex(0, 100);
+
+        int actual = linky.getValueByIndex(0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setValueByIndex_LastIndex() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 100;
+
+        linky.append(0);
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+
+        linky.setValueByIndex(3, 100);
+
+        int actual = linky.getValueByIndex(3);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setValueByIndex_NegativeIndex_ThrowsException() {
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DoubleLinkedList.outOfRangeError);
+
+        DoubleLinkedList linky = new DoubleLinkedList();
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+        linky.append(4);
+
+        linky.setValueByIndex(-1, 1000);
+    }
+
+    @Test
+    public void setValueByIndex_IndexGreaterSize_ThrowsException() {
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DoubleLinkedList.outOfRangeError);
+
+        DoubleLinkedList linky = new DoubleLinkedList();
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+        linky.append(4);
+
+        linky.setValueByIndex(1000, 1000);
+    }
 }

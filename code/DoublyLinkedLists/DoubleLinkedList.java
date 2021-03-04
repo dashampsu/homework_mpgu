@@ -86,6 +86,24 @@ public class DoubleLinkedList {
         return iterator.data;
     }
 
+    public void setValueByIndex(int index, int data) {
+
+        if (index < 0 || index > size) {
+            throw new RuntimeException(outOfRangeError);
+        }
+
+        int currentIndex = 0;
+
+        DoubleLinkedListElement iterator = head;
+
+        while (currentIndex != index) {
+            iterator = iterator.elementGetNext();
+            currentIndex++;
+        }
+
+        iterator.setData(data);
+    }
+
     public int findFirstOccurance(int data) {
         // возвращает индекс первого вхождения
 
