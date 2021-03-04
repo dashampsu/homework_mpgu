@@ -139,7 +139,7 @@ public class DoubleLinkedListTests extends Assert {
     }
 
     @Test
-    public void findFirstOccurance_NotExistingElement() {
+    public void findFirstOccurance_NotExistingElement_ThrowsException() {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DoubleLinkedList.elementNotFoundError);
 
@@ -150,7 +150,7 @@ public class DoubleLinkedListTests extends Assert {
     }
 
     @Test
-    public void findFirstOccurance_EmptyArray() {
+    public void findFirstOccurance_EmptyArray_ThrowsException() {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DoubleLinkedList.listIsEmptyError);
 
@@ -180,6 +180,64 @@ public class DoubleLinkedListTests extends Assert {
 
         int actual = linky.getSize();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getValueByIndex_FirstIndex() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 0;
+
+        linky.append(0);
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+
+        int actual = linky.getValueByIndex(0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getValueByIndex_LastIndex() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 4;
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+        linky.append(4);
+
+        int actual = linky.getValueByIndex(3);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getValueByIndex_NegativeIndex_ThrowsException() {
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DoubleLinkedList.outOfRangeError);
+
+        DoubleLinkedList linky = new DoubleLinkedList(); // todo
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+        linky.append(4);
+
+        linky.getValueByIndex(-1);
+    }
+
+    @Test
+    public void getValueByIndex_IndexGreaterSize_ThrowsException() {
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DoubleLinkedList.outOfRangeError);
+
+        DoubleLinkedList linky = new DoubleLinkedList(); // todo
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+        linky.append(4);
+
+        linky.getValueByIndex(100);
     }
 
 }

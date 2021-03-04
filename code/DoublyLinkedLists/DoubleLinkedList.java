@@ -8,6 +8,7 @@ public class DoubleLinkedList {
     // ...... ошибки ......
     public static String listIsEmptyError = "список пустой";
     public static String elementNotFoundError = "элемент не найден";
+    public static String outOfRangeError = "индекс за границами массива";
 
     public Boolean isEmpty() {
         if (size > 0) {
@@ -65,6 +66,24 @@ public class DoubleLinkedList {
 
     public int getSize() {
         return size;
+    }
+
+    public int getValueByIndex(int index) {
+
+        if (index < 0 || index > size) {
+            throw new RuntimeException(outOfRangeError);
+        }
+
+        int currentIndex = 0;
+
+        DoubleLinkedListElement iterator = head;
+
+        while (currentIndex != index) {
+            iterator = iterator.elementGetNext();
+            currentIndex++;
+        }
+
+        return iterator.data;
     }
 
     public int findFirstOccurance(int data) {
