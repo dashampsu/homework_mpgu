@@ -421,4 +421,65 @@ public class DoubleLinkedListTests extends Assert {
         int actual = linky.getValueByIndex(2);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void insertAfter_NotExistingNode_ThrowsException() {
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DoubleLinkedList.elementNotFoundError);
+
+        DoubleLinkedList linky = new DoubleLinkedList();
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+        linky.append(4);
+
+        DoubleLinkedListElement check = new DoubleLinkedListElement(33);
+        linky.insertAfter(check, 10);
+    }
+
+    @Test
+    public void insertBefore_listSize_increase() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 4;
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+
+        linky.insertBefore(linky.findFirstNodeByValue(2), 33);
+
+        int actual = linky.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void insertBefore_valueValidation() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 22;
+
+        linky.append(1);
+        linky.append(2);
+
+        linky.insertBefore(linky.findFirstNodeByValue(2), 22);
+
+        int actual = linky.getValueByIndex(1);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void insertBefore_NotExistingNode_ThrowsException() {
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DoubleLinkedList.elementNotFoundError);
+
+        DoubleLinkedList linky = new DoubleLinkedList();
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+        linky.append(4);
+
+        DoubleLinkedListElement check = new DoubleLinkedListElement(33);
+        linky.insertBefore(check, 10);
+    }
 }

@@ -73,6 +73,10 @@ public class DoubleLinkedList {
         DoubleLinkedListElement newNode = new DoubleLinkedListElement(data);
         size++;
 
+        if (contains(afterNode.data) == false) {
+            throw new RuntimeException(elementNotFoundError);
+        }
+
         newNode.next = afterNode.next;
         newNode.prev = afterNode;
 
@@ -82,6 +86,26 @@ public class DoubleLinkedList {
         else {
             afterNode.next = newNode;
             newNode.next.prev = newNode;
+        }
+    }
+
+    public void insertBefore(DoubleLinkedListElement beforeNode, int data) {
+        DoubleLinkedListElement newNode = new DoubleLinkedListElement(data);
+        size++;
+
+        if (contains(beforeNode.data) == false) {
+            throw new RuntimeException(elementNotFoundError);
+        }
+
+
+        newNode.prev = beforeNode.prev;
+        beforeNode.prev = newNode;
+        newNode.next = beforeNode;
+
+        if (newNode.prev != null) {
+            newNode.prev.next = newNode;
+        } else {
+            insert(data);
         }
     }
 
