@@ -68,6 +68,51 @@ public class DoubleLinkedList {
         return size;
     }
 
+
+    public void removeElementByValue(int value) {
+        DoubleLinkedListElement iterator = head;
+
+        while (iterator.elementGetNext() != null) {
+            if (iterator.data == value) {
+
+                // если это первый элемент
+                if(iterator.elementGetPrev() == null) {
+                    head = head.next;
+                    head.prev = null;
+                    size--;
+                    return;
+                }
+
+                // если это последний элемент
+                if(iterator.elementGetNext() == null) {
+                    head = head.prev;
+                    head.next = null;
+                    size--;
+                    return;
+                }
+
+                // если это элемент посередине
+
+                iterator.elementGetPrev().next = iterator.next;
+                size--;
+                return;
+            }
+            iterator = iterator.next;
+        }
+
+
+        // если последний элемент
+
+        if (iterator.data == value) {
+            iterator.elementGetPrev().next = iterator.next;
+            size--;
+            return;
+        }
+
+        throw new RuntimeException(elementNotFoundError);
+    }
+
+
     public int getValueByIndex(int index) {
 
         if (index < 0 || index > size) {
@@ -141,9 +186,9 @@ public class DoubleLinkedList {
         DoubleLinkedListElement iterator = head;
         iterator.elementSetNext(head.elementGetNext());
 
-        while (iterator.elementGetPrev() != null) {
+        while (iterator.elementGetNext() != null) {
             System.out.print(iterator.getData() + " ");
-            iterator = iterator.elementGetPrev();
+            iterator = iterator.elementGetNext();
         }
         System.out.println(iterator.getData());
     }

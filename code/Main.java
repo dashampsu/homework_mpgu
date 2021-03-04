@@ -11,12 +11,8 @@ public class Main {
 
         listy.printAll(); // 3 2 1 starting from end
 
-        DoubleLinkedList dada = new DoubleLinkedList();
+        listy.removeElementByValue(3);
 
-        dada.insert(1); // 1
-        dada.insert(2); // 2 1
-        dada.insert(3); // 3 2 1
-
-        dada.printAll();
+        listy.printAll();
     }
 }

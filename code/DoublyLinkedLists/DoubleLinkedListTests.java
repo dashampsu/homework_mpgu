@@ -301,4 +301,83 @@ public class DoubleLinkedListTests extends Assert {
 
         linky.setValueByIndex(1000, 1000);
     }
+
+    @Test
+    public void removeElementByValue_firstElement() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 2;
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+        linky.append(4);
+
+        linky.removeElementByValue(1);
+
+        int actual = linky.getValueByIndex(0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void removeElementByValue_LastElement() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 3;
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+        linky.append(4);
+
+        linky.removeElementByValue(4);
+
+        int actual = linky.getValueByIndex(2);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void removeElementByValue_MiddleElement() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 4;
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+        linky.append(4);
+
+        linky.removeElementByValue(2);
+
+        int actual = linky.getValueByIndex(2);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void removeElementByValue_ListSize() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 3;
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+        linky.append(4);
+
+        linky.removeElementByValue(2);
+
+        int actual = linky.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void removeElementByValue_NotExistingValue() {
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DoubleLinkedList.elementNotFoundError);
+
+        DoubleLinkedList linky = new DoubleLinkedList();
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+        linky.append(4);
+
+        linky.removeElementByValue(1000);
+    }
 }
