@@ -7,6 +7,7 @@ public class DoubleLinkedList {
 
     // ...... ошибки ......
     public static String listIsEmptyError = "список пустой";
+    public static String elementNotFoundError = "элемент не найден";
 
     public Boolean isEmpty() {
         if (size > 0) {
@@ -60,6 +61,39 @@ public class DoubleLinkedList {
             contains = true;
         }
         return contains;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public int findFirstOccurance(int data) {
+        // возвращает индекс первого вхождения
+
+        if (size < 1) {
+            throw new RuntimeException(listIsEmptyError);
+        }
+
+        DoubleLinkedListElement iterator = head;
+        iterator.elementSetNext(head.elementGetNext());
+
+        int index = 0;
+
+        while (iterator.elementGetNext() != null) {
+
+            if (iterator.data == data) {
+                return index;
+            }
+
+            iterator = iterator.elementGetNext();
+            index++;
+        }
+
+        if (iterator.data == data) {
+            return index;
+        }
+
+        throw new RuntimeException(elementNotFoundError);
     }
 
     public void printAll() {

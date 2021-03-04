@@ -1,9 +1,14 @@
 package DoublyLinkedLists;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class DoubleLinkedListTests extends Assert {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void list_init_listSize() {
@@ -87,6 +92,93 @@ public class DoubleLinkedListTests extends Assert {
         boolean expected = false;
 
         boolean actual = linky.contains(1);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getIndexFirst_LastElement() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 3;
+
+        linky.append(2);
+        linky.append(2);
+        linky.append(2);
+        linky.append(1);
+
+        int actual = linky.findFirstOccurance(1);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findFirstOccurance_FirstElement() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 0;
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(2);
+        linky.append(2);
+
+        int actual = linky.findFirstOccurance(1);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findFirstOccurance_MultipleElements() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 2;
+
+        linky.append(2);
+        linky.append(2);
+        linky.append(1);
+        linky.append(2);
+        linky.append(1);
+
+        int actual = linky.findFirstOccurance(1);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findFirstOccurance_NotExistingElement() {
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DoubleLinkedList.elementNotFoundError);
+
+        DoubleLinkedList linky = new DoubleLinkedList();
+        linky.insert(1);
+
+        linky.findFirstOccurance(2);
+    }
+
+    @Test
+    public void findFirstOccurance_EmptyArray() {
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DoubleLinkedList.listIsEmptyError);
+
+        DoubleLinkedList linky = new DoubleLinkedList();
+
+        linky.findFirstOccurance(2);
+    }
+
+    @Test
+    public void getSize_EmptyList() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 0;
+
+        int actual = linky.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getSize_NotEmptyList() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 4;
+
+        linky.append(3);
+        linky.append(3);
+        linky.append(3);
+        linky.append(3);
+
+        int actual = linky.getSize();
         assertEquals(expected, actual);
     }
 
