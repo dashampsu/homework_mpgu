@@ -69,6 +69,22 @@ public class DoubleLinkedList {
     }
 
 
+    public void insertAfter(DoubleLinkedListElement afterNode, int data) {
+        DoubleLinkedListElement newNode = new DoubleLinkedListElement(data);
+        size++;
+
+        newNode.next = afterNode.next;
+        newNode.prev = afterNode;
+
+        if (afterNode == tail) {
+            append(data);
+        }
+        else {
+            afterNode.next = newNode;
+            newNode.next.prev = newNode;
+        }
+    }
+
     public void removeElementByValue(int value) {
         DoubleLinkedListElement iterator = head;
 
@@ -173,6 +189,32 @@ public class DoubleLinkedList {
 
         if (iterator.data == data) {
             return index;
+        }
+
+        throw new RuntimeException(elementNotFoundError);
+    }
+
+    public DoubleLinkedListElement findFirstNodeByValue(int data) {
+        // возвращает индекс первого вхождения
+
+        if (size < 1) {
+            throw new RuntimeException(listIsEmptyError);
+        }
+
+        DoubleLinkedListElement iterator = head;
+        iterator.elementSetNext(head.elementGetNext());
+
+        while (iterator.elementGetNext() != null) {
+
+            if (iterator.data == data) {
+                return iterator;
+            }
+
+            iterator = iterator.elementGetNext();
+        }
+
+        if (iterator.data == data) {
+            return iterator;
         }
 
         throw new RuntimeException(elementNotFoundError);

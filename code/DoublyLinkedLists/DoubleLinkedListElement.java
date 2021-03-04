@@ -9,7 +9,7 @@ public class DoubleLinkedListElement {
 
     }
 
-    DoubleLinkedListElement(int data) {
+    public DoubleLinkedListElement(int data) {
         this.data = data;
     }
 

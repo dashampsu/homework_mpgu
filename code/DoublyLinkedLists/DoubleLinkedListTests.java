@@ -47,11 +47,23 @@ public class DoubleLinkedListTests extends Assert {
     @Test
     public void append_listSize_increase() {
         DoubleLinkedList linky = new DoubleLinkedList();
-        boolean expected = true;
+        int expected = 1;
 
         linky.append(1);
 
-        boolean actual = linky.contains(1);
+        int actual = linky.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void append_valueValidation() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 2;
+
+        linky.append(1);
+        linky.append(2);
+
+        int actual = linky.getValueByIndex(1);
         assertEquals(expected, actual);
     }
 
@@ -379,5 +391,34 @@ public class DoubleLinkedListTests extends Assert {
         linky.append(4);
 
         linky.removeElementByValue(1000);
+    }
+
+    @Test
+    public void insertAfter_listSize_increase() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 4;
+
+        linky.append(1);
+        linky.append(2);
+        linky.append(3);
+
+        linky.insertAfter(linky.findFirstNodeByValue(2), 33);
+
+        int actual = linky.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void insertAfter_valueValidation() {
+        DoubleLinkedList linky = new DoubleLinkedList();
+        int expected = 22;
+
+        linky.append(1);
+        linky.append(2);
+
+        linky.insertAfter(linky.findFirstNodeByValue(2), 22);
+
+        int actual = linky.getValueByIndex(2);
+        assertEquals(expected, actual);
     }
 }
