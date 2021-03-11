@@ -43,5 +43,63 @@ public class StackTests {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void pop_size_Validation() {
+        Stack stack = new Stack();
+        int expected = 2;
+
+        stack.push(1);
+        stack.push(1);
+        stack.push(1);
+
+        stack.pop();
+
+        int actual = stack.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void pop_data_Validation() {
+        Stack stack = new Stack();
+        int expected = 123;
+
+        stack.push(12);
+        stack.push(123);
+
+        int actual = stack.peek();
+        assertEquals(expected, actual);
+
+        expected = 12;
+        stack.pop();
+        actual = stack.peek();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void pop_EmptyStack() {
+        Stack stack = new Stack();
+
+        stack.pop();
+    }
+
+    @Test
+    public void getSize_validation() {
+        Stack stack = new Stack();
+        int expected = 1;
+
+        stack.push(1);
+
+        int actual = stack.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getSize_EmptyStack() {
+        Stack stack = new Stack();
+        int expected = 0;
+
+        int actual = stack.getSize();
+        assertEquals(expected, actual);
+    }
 
 }

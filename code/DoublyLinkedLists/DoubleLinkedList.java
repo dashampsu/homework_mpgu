@@ -247,6 +247,10 @@ public class DoubleLinkedList {
     public void pop() {
         // deletes the last element
 
+        if (tail == null) {
+            return;
+        }
+
         tail = tail.prev;
     }
 
