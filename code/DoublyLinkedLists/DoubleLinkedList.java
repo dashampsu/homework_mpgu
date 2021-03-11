@@ -244,6 +244,12 @@ public class DoubleLinkedList {
         throw new RuntimeException(elementNotFoundError);
     }
 
+    public void pop() {
+        // deletes the last element
+
+        tail = tail.prev;
+    }
+
     public void printAll() {
         if (isEmpty()) {
             throw new RuntimeException(listIsEmptyError);
