@@ -16,7 +16,7 @@ public class Stack {
         counter--;
     }
 
-    public int get() {
+    public int peek() {
         return linky.getTail();
     }
 
