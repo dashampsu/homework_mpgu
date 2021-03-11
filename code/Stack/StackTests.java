@@ -102,4 +102,24 @@ public class StackTests {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void isEmpty_emptyStack() {
+        Stack stack = new Stack();
+        boolean expected = true;
+
+        boolean actual = stack.isEmpty();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void isEmpty_NotEmptyStack() {
+        Stack stack = new Stack();
+        boolean expected = false;
+
+        stack.push(1);
+
+        boolean actual = stack.isEmpty();
+        assertEquals(expected, actual);
+    }
+
 }
