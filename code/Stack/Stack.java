@@ -8,14 +8,20 @@ public class Stack {
 
     public void append(int data) {
         linky.append(data);
+        counter++;
     }
 
     public void pop() {
         linky.pop();
+        counter--;
     }
 
     public int get() {
         return linky.getTail();
+    }
+
+    public int getSize() {
+        return counter;
     }
 
     public void printAll() {
