@@ -122,4 +122,20 @@ public class StackTests {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void peek_data_validation() {
+        Stack stack = new Stack();
+        int expected = 1;
+
+        stack.push(1);
+
+        int actual = stack.peek();
+        assertEquals(expected, actual);
+
+        expected = 2;
+        stack.push(2);
+        actual = stack.peek();
+        assertEquals(expected, actual);
+    }
+
 }
