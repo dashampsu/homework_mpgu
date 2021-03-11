@@ -6,7 +6,7 @@ public class Stack {
     DoubleLinkedList linky = new DoubleLinkedList();
     int counter = 0;
 
-    public void append(int data) {
+    public void push(int data) {
         linky.append(data);
         counter++;
     }
