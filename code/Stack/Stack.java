@@ -24,6 +24,14 @@ public class Stack {
         return counter;
     }
 
+    public boolean isEmpty() {
+        if (counter == 0) {
+            return false;
+        }
+
+        return true;
+    }
+
     public void printAll() {
         linky.printAll();
     }
