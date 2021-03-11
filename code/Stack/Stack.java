@@ -1,5 +1,6 @@
 package Stack;
 import DoublyLinkedLists.DoubleLinkedList;
+import DoublyLinkedLists.DoubleLinkedListElement;
 
 public class Stack {
     DoubleLinkedList linky = new DoubleLinkedList();
@@ -13,8 +14,8 @@ public class Stack {
         linky.pop();
     }
 
-    public void get() {
-        linky.getTail;
+    public int get() {
+        return linky.getTail();
     }
 
     public void printAll() {

@@ -16,5 +16,7 @@ public class Main {
         stack.append(4);
 
         stack.printAll();
+
+        System.out.println(stack.get());
     }
 }

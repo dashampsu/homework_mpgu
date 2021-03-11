@@ -250,6 +250,12 @@ public class DoubleLinkedList {
         tail = tail.prev;
     }
 
+    public int getTail() {
+        // deletes the last element
+
+        return tail.data;
+    }
+
     public void printAll() {
         if (isEmpty()) {
             throw new RuntimeException(listIsEmptyError);
