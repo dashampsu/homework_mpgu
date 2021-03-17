@@ -17,6 +17,10 @@ public class DoubleLinkedList {
         return true;
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public void insert(int data) {
         DoubleLinkedListElement newNode = new DoubleLinkedListElement(null, data, head);
 
@@ -63,11 +67,6 @@ public class DoubleLinkedList {
         }
         return contains;
     }
-
-    public int getSize() {
-        return size;
-    }
-
 
     public void insertAfter(DoubleLinkedListElement afterNode, int data) {
         DoubleLinkedListElement newNode = new DoubleLinkedListElement(data);
@@ -187,6 +186,52 @@ public class DoubleLinkedList {
         }
 
         iterator.setData(data);
+    }
+
+    public DoubleLinkedListElement getNodeByIndex(int index) {
+
+        if (index < 0 || index > size) {
+            throw new RuntimeException(outOfRangeError);
+        }
+
+        int currentIndex = 0;
+
+        DoubleLinkedListElement iterator = head;
+
+        while (currentIndex != index) {
+            iterator = iterator.elementGetNext();
+            currentIndex++;
+        }
+
+        return iterator;
+    }
+
+    public void setNodeByIndex(int index, DoubleLinkedListElement node) {
+
+        if (index < 0 || index > size) {
+            throw new RuntimeException(outOfRangeError);
+        }
+
+        int currentIndex = 0;
+
+        DoubleLinkedListElement iterator = head;
+
+        while (currentIndex != index) {
+            iterator = iterator.elementGetNext();
+            currentIndex++;
+        }
+
+        if (iterator.prev == null) {
+            head = iterator.next;
+            return;
+        }
+
+        if (iterator.next == null) {
+            tail = iterator;
+            return;
+        }
+
+        iterator.prev.next = node;
     }
 
     public int findFirstOccurance(int data) {
