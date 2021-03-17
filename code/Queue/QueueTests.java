@@ -73,23 +73,4 @@ public class QueueTests {
         actual = queue.size();
         assertEquals(expected, actual);
     }
-
-    @Test
-    public void size_check_size() {
-        Queue queue = new Queue();
-        int expected = 1;
-
-        queue.enqueue(3);
-        queue.enqueue(3);
-
-        queue.dequeue();
-
-        Object actual = queue.size();
-        assertEquals(expected, actual);
-
-        expected = 0;
-        queue.dequeue();
-        actual = queue.size();
-        assertEquals(expected, actual);
-    }
 }
