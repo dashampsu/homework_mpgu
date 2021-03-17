@@ -9,4 +9,8 @@ public class Queue {
     public void enqueue(int value) {
         queue.append(value);
     }
+
+    public Object peek() {
+        return queue.head.getData();
+    }
 }

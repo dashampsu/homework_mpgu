@@ -1,8 +1,8 @@
 package DoublyLinkedLists;
 
 public class DoubleLinkedList {
-    DoubleLinkedListElement head;
-    DoubleLinkedListElement tail;
+    public DoubleLinkedListElement head;
+    public DoubleLinkedListElement tail;
     int size = 0;
 
     // ...... ошибки ......
