@@ -8,9 +8,14 @@ public class Queue {
 
     public void enqueue(int value) {
         queue.append(value);
+        size++;
     }
 
     public Object peek() {
         return queue.head.getData();
+    }
+
+    public int size() {
+        return size;
     }
 }
