@@ -1,4 +1,5 @@
-package Qeue;
+package Queue;
 
-public class QeueTests {
+public class QueueTests {
+
 }
