@@ -4,7 +4,7 @@ public class DynamicArray<T> {
 
     // .......... переменные ..........
     public T[] list;
-    public int defaultSize = 2;
+    public int defaultSize = 0;
 
     // .......... ошибки ..........
     public static String outOfBorderError = "Выход за границы массива";
@@ -128,5 +128,11 @@ public class DynamicArray<T> {
         }
 
         list = newList;
+    }
+
+    public void printAll() {
+        for (Object i : list) {
+            System.out.println(i);
+        }
     }
 }

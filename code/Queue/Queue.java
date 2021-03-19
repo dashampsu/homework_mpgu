@@ -24,12 +24,9 @@ public class Queue<T> {
     }
 
 
-//
-//    public int size() {
-//        return size;
-//    }
-//
-//    public void printAll() {
-//        queue.printAll();
-//    }
+
+    public void printAll() {
+        queue.printAll();
+    }
+
 }
