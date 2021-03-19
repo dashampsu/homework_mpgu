@@ -15,13 +15,12 @@ public class Queue<T> {
         size--;
     }
 
+    public T peek() {
+        return queue.get(0);
+    }
 
-//
-//    public void dequeue() {
-//        DoubleLinkedListElement<T> nodeToSet = queue.getNodeByIndex(1);
-//        queue.setNodeByIndex(0, nodeToSet);
-//        size--;
-//    }
+
+
 //
 //    public T peek() {
 //        return queue.head.getData();
