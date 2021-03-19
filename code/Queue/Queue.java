@@ -19,12 +19,11 @@ public class Queue<T> {
         return queue.get(0);
     }
 
+    public int size() {
+        return size;
+    }
 
 
-//
-//    public T peek() {
-//        return queue.head.getData();
-//    }
 //
 //    public int size() {
 //        return size;
