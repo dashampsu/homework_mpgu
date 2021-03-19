@@ -2,8 +2,13 @@ package Queue;
 import DynamicArrays.*;
 
 public class Queue<T> {
-    DynamicArray<Integer> array = new DynamicArray<Integer>();
+    DynamicArray<T> queue = new DynamicArray<T>();
     int size = 0;
+
+    public void enqueue(T value) {
+        queue.add(value);
+        size++;
+    }
 
 
 //    DoubleLinkedList<T> queue = new DoubleLinkedList<T>();
