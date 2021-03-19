@@ -2,11 +2,11 @@ package Stack;
 import DoublyLinkedLists.DoubleLinkedList;
 import DoublyLinkedLists.DoubleLinkedListElement;
 
-public class Stack {
-    DoubleLinkedList linky = new DoubleLinkedList();
+public class Stack<T> {
+    DoubleLinkedList<T> linky = new DoubleLinkedList<T>();
     int counter = 0;
 
-    public void push(int data) {
+    public void push(T data) {
         linky.append(data);
         counter++;
     }
@@ -16,7 +16,7 @@ public class Stack {
         counter--;
     }
 
-    public int peek() {
+    public T peek() {
         return linky.getTail();
     }
 

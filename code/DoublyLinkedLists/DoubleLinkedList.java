@@ -1,8 +1,8 @@
 package DoublyLinkedLists;
 
-public class DoubleLinkedList {
-    public DoubleLinkedListElement head;
-    public DoubleLinkedListElement tail;
+public class DoubleLinkedList<T> {
+    public DoubleLinkedListElement<T> head;
+    public DoubleLinkedListElement<T> tail;
     int size = 0;
 
     // ...... ошибки ......
@@ -21,8 +21,8 @@ public class DoubleLinkedList {
         return size;
     }
 
-    public void insert(int data) {
-        DoubleLinkedListElement newNode = new DoubleLinkedListElement(null, data, head);
+    public void insert(T data) {
+        DoubleLinkedListElement<T> newNode = new DoubleLinkedListElement<T>(null, data, head);
 
         if (head == null) {
             head = newNode;
@@ -36,8 +36,8 @@ public class DoubleLinkedList {
         size++;
     }
 
-    public void append(int data) {
-        DoubleLinkedListElement newNode = new DoubleLinkedListElement(tail, data, null);
+    public void append(T data) {
+        DoubleLinkedListElement<T> newNode = new DoubleLinkedListElement<T>(tail, data, null);
 
         if (head == null) {
             head = newNode;
@@ -51,28 +51,28 @@ public class DoubleLinkedList {
         size++;
     }
 
-    public Boolean contains(int data) {
+    public Boolean contains(T data) {
         boolean contains = false;
-        DoubleLinkedListElement iterator = head;
+        DoubleLinkedListElement<T> iterator = head;
 
         while (iterator != null && iterator.elementGetNext() != null) {
-            if (iterator.data == data) {
+            if (iterator.data.equals(data)) {
                 contains = true;
             }
             iterator = iterator.elementGetNext();
         }
 
-        if (!isEmpty() && iterator.data == data) {
+        if (!isEmpty() && iterator.data.equals(data)) {
             contains = true;
         }
         return contains;
     }
 
-    public void insertAfter(DoubleLinkedListElement afterNode, int data) {
-        DoubleLinkedListElement newNode = new DoubleLinkedListElement(data);
+    public void insertAfter(DoubleLinkedListElement<T> afterNode, T data) {
+        DoubleLinkedListElement<T> newNode = new DoubleLinkedListElement<T>(data);
         size++;
 
-        if (contains(afterNode.data) == false) {
+        if (!contains(afterNode.data)) {
             throw new RuntimeException(elementNotFoundError);
         }
 
@@ -88,11 +88,11 @@ public class DoubleLinkedList {
         }
     }
 
-    public void insertBefore(DoubleLinkedListElement beforeNode, int data) {
-        DoubleLinkedListElement newNode = new DoubleLinkedListElement(data);
+    public void insertBefore(DoubleLinkedListElement<T> beforeNode, T data) {
+        DoubleLinkedListElement<T> newNode = new DoubleLinkedListElement<T>(data);
         size++;
 
-        if (contains(beforeNode.data) == false) {
+        if (!contains(beforeNode.data)) {
             throw new RuntimeException(elementNotFoundError);
         }
 
@@ -108,8 +108,8 @@ public class DoubleLinkedList {
         }
     }
 
-    public void removeElementByValue(int value) {
-        DoubleLinkedListElement iterator = head;
+    public void removeElementByValue(T value) {
+        DoubleLinkedListElement<T> iterator = head;
 
         while (iterator.elementGetNext() != null) {
             if (iterator.data == value) {
@@ -152,7 +152,7 @@ public class DoubleLinkedList {
     }
 
 
-    public int getValueByIndex(int index) {
+    public T getValueByIndex(int index) {
 
         if (index < 0 || index > size) {
             throw new RuntimeException(outOfRangeError);
@@ -160,7 +160,7 @@ public class DoubleLinkedList {
 
         int currentIndex = 0;
 
-        DoubleLinkedListElement iterator = head;
+        DoubleLinkedListElement<T> iterator = head;
 
         while (currentIndex != index) {
             iterator = iterator.elementGetNext();
@@ -170,7 +170,7 @@ public class DoubleLinkedList {
         return iterator.data;
     }
 
-    public void setValueByIndex(int index, int data) {
+    public void setValueByIndex(int index, T data) {
 
         if (index < 0 || index > size) {
             throw new RuntimeException(outOfRangeError);
@@ -178,7 +178,7 @@ public class DoubleLinkedList {
 
         int currentIndex = 0;
 
-        DoubleLinkedListElement iterator = head;
+        DoubleLinkedListElement<T> iterator = head;
 
         while (currentIndex != index) {
             iterator = iterator.elementGetNext();
@@ -188,7 +188,7 @@ public class DoubleLinkedList {
         iterator.setData(data);
     }
 
-    public DoubleLinkedListElement getNodeByIndex(int index) {
+    public DoubleLinkedListElement<T> getNodeByIndex(int index) {
 
         if (index < 0 || index > size) {
             throw new RuntimeException(outOfRangeError);
@@ -196,7 +196,7 @@ public class DoubleLinkedList {
 
         int currentIndex = 0;
 
-        DoubleLinkedListElement iterator = head;
+        DoubleLinkedListElement<T> iterator = head;
 
         while (currentIndex != index) {
             iterator = iterator.elementGetNext();
@@ -206,7 +206,7 @@ public class DoubleLinkedList {
         return iterator;
     }
 
-    public void setNodeByIndex(int index, DoubleLinkedListElement node) {
+    public void setNodeByIndex(int index, DoubleLinkedListElement<T> node) {
 
         if (index < 0 || index > size) {
             throw new RuntimeException(outOfRangeError);
@@ -214,7 +214,7 @@ public class DoubleLinkedList {
 
         int currentIndex = 0;
 
-        DoubleLinkedListElement iterator = head;
+        DoubleLinkedListElement<T> iterator = head;
 
         while (currentIndex != index) {
             iterator = iterator.elementGetNext();
@@ -234,14 +234,14 @@ public class DoubleLinkedList {
         iterator.prev.next = node;
     }
 
-    public int findFirstOccurance(int data) {
+    public int findFirstOccurance(T data) {
         // возвращает индекс первого вхождения
 
         if (size < 1) {
             throw new RuntimeException(listIsEmptyError);
         }
 
-        DoubleLinkedListElement iterator = head;
+        DoubleLinkedListElement<T> iterator = head;
         iterator.elementSetNext(head.elementGetNext());
 
         int index = 0;
@@ -263,19 +263,19 @@ public class DoubleLinkedList {
         throw new RuntimeException(elementNotFoundError);
     }
 
-    public DoubleLinkedListElement findFirstNodeByValue(int data) {
+    public DoubleLinkedListElement<T> findFirstNodeByValue(T data) {
         // возвращает индекс первого вхождения
 
         if (size < 1) {
             throw new RuntimeException(listIsEmptyError);
         }
 
-        DoubleLinkedListElement iterator = head;
+        DoubleLinkedListElement<T> iterator = head;
         iterator.elementSetNext(head.elementGetNext());
 
         while (iterator.elementGetNext() != null) {
 
-            if (iterator.data == data) {
+            if (iterator.data.equals(data)) {
                 return iterator;
             }
 
@@ -299,7 +299,7 @@ public class DoubleLinkedList {
         tail = tail.prev;
     }
 
-    public int getTail() {
+    public T getTail() {
         // deletes the last element
 
         return tail.data;
@@ -310,7 +310,7 @@ public class DoubleLinkedList {
             throw new RuntimeException(listIsEmptyError);
         }
 
-        DoubleLinkedListElement iterator = head;
+        DoubleLinkedListElement<T> iterator = head;
         iterator.elementSetNext(head.elementGetNext());
 
         while (iterator.elementGetNext() != null) {

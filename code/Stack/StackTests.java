@@ -6,7 +6,7 @@ public class StackTests {
 
     @Test
     public void init_size() {
-        Stack stack = new Stack();
+        Stack<Integer> stack = new Stack<Integer>();
         int expected = 0;
 
         int actual = stack.getSize();
@@ -16,7 +16,7 @@ public class StackTests {
 
     @Test
     public void push_size_Validation() {
-        Stack stack = new Stack();
+        Stack<Integer> stack = new Stack<Integer>();
         int expected = 2;
 
         stack.push(1);
@@ -28,13 +28,13 @@ public class StackTests {
 
     @Test
     public void push_data_Validation() {
-        Stack stack = new Stack();
+        Stack<Integer> stack = new Stack<Integer>();
         int expected = 123;
 
         stack.push(12);
         stack.push(123);
 
-        int actual = stack.peek();
+        Object actual = stack.peek();
         assertEquals(expected, actual);
 
         expected = 12;
@@ -45,7 +45,7 @@ public class StackTests {
 
     @Test
     public void pop_size_Validation() {
-        Stack stack = new Stack();
+        Stack<Integer> stack = new Stack<Integer>();
         int expected = 2;
 
         stack.push(1);
@@ -60,7 +60,7 @@ public class StackTests {
 
     @Test
     public void pop_data_Validation() {
-        Stack stack = new Stack();
+        Stack<Integer> stack = new Stack<Integer>();
         int expected = 123;
 
         stack.push(12);
@@ -77,14 +77,14 @@ public class StackTests {
 
     @Test
     public void pop_EmptyStack() {
-        Stack stack = new Stack();
+        Stack<Integer> stack = new Stack<Integer>();
 
         stack.pop();
     }
 
     @Test
     public void getSize_validation() {
-        Stack stack = new Stack();
+        Stack<Integer> stack = new Stack<Integer>();
         int expected = 1;
 
         stack.push(1);
@@ -95,7 +95,7 @@ public class StackTests {
 
     @Test
     public void getSize_EmptyStack() {
-        Stack stack = new Stack();
+        Stack<Integer> stack = new Stack<Integer>();
         int expected = 0;
 
         int actual = stack.getSize();
@@ -104,7 +104,7 @@ public class StackTests {
 
     @Test
     public void isEmpty_emptyStack() {
-        Stack stack = new Stack();
+        Stack<Integer> stack = new Stack<Integer>();
         boolean expected = true;
 
         boolean actual = stack.isEmpty();
@@ -113,7 +113,7 @@ public class StackTests {
 
     @Test
     public void isEmpty_NotEmptyStack() {
-        Stack stack = new Stack();
+        Stack<Integer> stack = new Stack<Integer>();
         boolean expected = false;
 
         stack.push(1);
@@ -124,7 +124,7 @@ public class StackTests {
 
     @Test
     public void peek_data_validation() {
-        Stack stack = new Stack();
+        Stack<Integer> stack = new Stack<Integer>();
         int expected = 1;
 
         stack.push(1);

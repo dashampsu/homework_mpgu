@@ -1,45 +1,45 @@
 package DoublyLinkedLists;
 
-public class DoubleLinkedListElement {
-    DoubleLinkedListElement next;
-    DoubleLinkedListElement prev;
-    int data;
+public class DoubleLinkedListElement<T> {
+    DoubleLinkedListElement<T> next;
+    DoubleLinkedListElement<T> prev;
+    T data;
 
     DoubleLinkedListElement() {
 
     }
 
-    public DoubleLinkedListElement(int data) {
+    public DoubleLinkedListElement(T data) {
         this.data = data;
     }
 
-    DoubleLinkedListElement(DoubleLinkedListElement prev, int data, DoubleLinkedListElement next) {
+    DoubleLinkedListElement(DoubleLinkedListElement<T> prev, T data, DoubleLinkedListElement<T> next) {
         this.prev = prev;
         this.data = data;
         this.next = next;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(int data) {
+    public void setData(T data) {
         this.data = data;
     }
 
-    public DoubleLinkedListElement elementGetNext() {
+    public DoubleLinkedListElement<T> elementGetNext() {
         return next;
     }
 
-    public void elementSetNext(DoubleLinkedListElement next) {
+    public void elementSetNext(DoubleLinkedListElement<T> next) {
         this.next = next;
     }
 
-    public DoubleLinkedListElement elementGetPrev() {
+    public DoubleLinkedListElement<T> elementGetPrev() {
         return prev;
     }
 
-    public void elementSetPrev(DoubleLinkedListElement prev) {
+    public void elementSetPrev(DoubleLinkedListElement<T> prev) {
         this.prev = prev;
     }
 }

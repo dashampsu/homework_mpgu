@@ -5,14 +5,14 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class DoubleLinkedListTests extends Assert {
+public class DoubleLinkedListTests<T> extends Assert {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void list_init_listSize() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 0;
 
         int actual = linky.size;
@@ -21,7 +21,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void insert_listSize_increase() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 1;
 
         linky.insert(1);
@@ -46,7 +46,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void append_listSize_increase() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 1;
 
         linky.append(1);
@@ -57,7 +57,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void append_valueValidation() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 2;
 
         linky.append(1);
@@ -69,7 +69,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void isEmpty_notEmptyList() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         boolean expected = true;
 
         boolean actual = linky.isEmpty();
@@ -78,7 +78,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void isEmpty_emptyList() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         boolean expected = false;
 
         linky.append(1);
@@ -89,7 +89,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void contains_existingValue() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         boolean expected = true;
 
         linky.append(1);
@@ -100,7 +100,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void contains_notExistingValue() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         boolean expected = false;
 
         boolean actual = linky.contains(1);
@@ -109,7 +109,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void getIndexFirst_LastElement() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 3;
 
         linky.append(2);
@@ -123,7 +123,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void findFirstOccurance_FirstElement() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 0;
 
         linky.append(1);
@@ -137,7 +137,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void findFirstOccurance_MultipleElements() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 2;
 
         linky.append(2);
@@ -155,7 +155,7 @@ public class DoubleLinkedListTests extends Assert {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DoubleLinkedList.elementNotFoundError);
 
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         linky.insert(1);
 
         linky.findFirstOccurance(2);
@@ -166,14 +166,14 @@ public class DoubleLinkedListTests extends Assert {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DoubleLinkedList.listIsEmptyError);
 
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
 
         linky.findFirstOccurance(2);
     }
 
     @Test
     public void getSize_EmptyList() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 0;
 
         int actual = linky.getSize();
@@ -182,7 +182,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void getSize_NotEmptyList() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 4;
 
         linky.append(3);
@@ -196,7 +196,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void getValueByIndex_FirstIndex() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 0;
 
         linky.append(0);
@@ -210,7 +210,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void getValueByIndex_LastIndex() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 4;
 
         linky.append(1);
@@ -227,7 +227,7 @@ public class DoubleLinkedListTests extends Assert {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DoubleLinkedList.outOfRangeError);
 
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
 
         linky.append(1);
         linky.append(2);
@@ -242,7 +242,7 @@ public class DoubleLinkedListTests extends Assert {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DoubleLinkedList.outOfRangeError);
 
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
 
         linky.append(1);
         linky.append(2);
@@ -254,7 +254,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void setValueByIndex_FirstIndex() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 100;
 
         linky.append(0);
@@ -270,7 +270,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void setValueByIndex_LastIndex() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 100;
 
         linky.append(0);
@@ -289,7 +289,7 @@ public class DoubleLinkedListTests extends Assert {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DoubleLinkedList.outOfRangeError);
 
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
 
         linky.append(1);
         linky.append(2);
@@ -304,7 +304,7 @@ public class DoubleLinkedListTests extends Assert {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DoubleLinkedList.outOfRangeError);
 
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
 
         linky.append(1);
         linky.append(2);
@@ -316,7 +316,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void removeElementByValue_firstElement() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 2;
 
         linky.append(1);
@@ -332,7 +332,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void removeElementByValue_LastElement() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 3;
 
         linky.append(1);
@@ -348,7 +348,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void removeElementByValue_MiddleElement() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 4;
 
         linky.append(1);
@@ -364,7 +364,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void removeElementByValue_ListSize() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 3;
 
         linky.append(1);
@@ -383,7 +383,7 @@ public class DoubleLinkedListTests extends Assert {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DoubleLinkedList.elementNotFoundError);
 
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
 
         linky.append(1);
         linky.append(2);
@@ -395,7 +395,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void insertAfter_listSize_increase() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 4;
 
         linky.append(1);
@@ -410,7 +410,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void insertAfter_valueValidation() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 22;
 
         linky.append(1);
@@ -427,20 +427,20 @@ public class DoubleLinkedListTests extends Assert {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DoubleLinkedList.elementNotFoundError);
 
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
 
         linky.append(1);
         linky.append(2);
         linky.append(3);
         linky.append(4);
 
-        DoubleLinkedListElement check = new DoubleLinkedListElement(33);
+        DoubleLinkedListElement<Integer> check = new DoubleLinkedListElement<Integer>(33);
         linky.insertAfter(check, 10);
     }
 
     @Test
     public void insertBefore_listSize_increase() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 4;
 
         linky.append(1);
@@ -455,7 +455,7 @@ public class DoubleLinkedListTests extends Assert {
 
     @Test
     public void insertBefore_valueValidation() {
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
         int expected = 22;
 
         linky.append(1);
@@ -472,14 +472,14 @@ public class DoubleLinkedListTests extends Assert {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage(DoubleLinkedList.elementNotFoundError);
 
-        DoubleLinkedList linky = new DoubleLinkedList();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>();
 
         linky.append(1);
         linky.append(2);
         linky.append(3);
         linky.append(4);
 
-        DoubleLinkedListElement check = new DoubleLinkedListElement(33);
+        DoubleLinkedListElement<Integer> check = new DoubleLinkedListElement<Integer>(33);
         linky.insertBefore(check, 10);
     }
 }
