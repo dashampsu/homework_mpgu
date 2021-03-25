@@ -196,4 +196,37 @@ public class DeckTests {
         int actual = deck.peekBack();
         assertEquals(expected, actual);
     }
+
+    /* peekBack tests */
+
+    @Test
+    public void peeekBack_normalTest() {
+        Deck<Integer> deck = new Deck<Integer>();
+
+        deck.pushBack(1);
+        deck.pushBack(2);
+        deck.pushBack(3);
+
+        int expected = 3;
+        int actual = deck.peekBack();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void peekBack_emptyDeck_throwsException() {
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(Deck.emptyDeckError);
+
+        Deck<Integer> deck = new Deck<Integer>();
+
+        deck.pushBack(1);
+        deck.pushBack(2);
+        deck.pushBack(3);
+
+        deck.popFront();
+        deck.popFront();
+        deck.popFront();
+
+        deck.peekBack();
+    }
 }

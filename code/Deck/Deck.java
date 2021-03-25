@@ -48,7 +48,12 @@ public class Deck<T> {
     }
 
     public T peekBack() {
-        return list.tail.getData();
+
+        if (list.tail != null) {
+            return list.tail.getData();
+        }
+
+        throw new RuntimeException(emptyDeckError);
     }
 
     public void printAll() {
