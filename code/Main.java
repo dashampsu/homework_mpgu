@@ -1,12 +1,17 @@
 import DoublyLinkedLists.*;
 import Stack.*;
 import Queue.*;
+import Deck.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        Queue<Integer> queue = new Queue<Integer>();
+        Deck<Integer> deck = new Deck<Integer>();
 
-        queue.printAll();
+        deck.push_back(10);
+        deck.push_back(20);
+        deck.push_back(30);
+        deck.printAll();
+
     }
 }

@@ -11,7 +11,20 @@ public class Deck<T> {
         list.insert(value);
     }
 
+    public T peek_front() {
+        return list.head.getData();
+    }
+
+
+
+
     public void push_back(T value) {
         list.append(value);
+    }
+
+
+
+    public void printAll() {
+        list.printAll();
     }
 }
