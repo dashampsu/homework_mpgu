@@ -13,5 +13,8 @@ public class Main {
         deck.push_back(30);
         deck.printAll();
 
+        deck.pop_front();
+        deck.printAll();
+
     }
 }

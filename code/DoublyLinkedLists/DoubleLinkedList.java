@@ -155,6 +155,48 @@ public class DoubleLinkedList<T> {
         throw new RuntimeException(elementNotFoundError);
     }
 
+    public void removeElement(int id) {
+        DoubleLinkedListElement<T> temp = head;
+        temp.next = head.next;
+        int counter = 0;
+
+        while (temp.next != null && counter != id) {
+            // iterating over the list
+
+            temp = temp.next;
+            counter++;
+        }
+
+        if (counter == id) {
+            // if element is found
+
+            if (temp.prev == null) {
+                // if it's the first element
+
+                head = temp.next;
+                head.prev = null;
+                return;
+            }
+
+            if (temp.next == null) {
+                // if it's the last element
+
+                tail = temp.prev;
+                tail.next = null;
+                return;
+            }
+
+            DoubleLinkedListElement<T> prevElement = temp.prev;
+            DoubleLinkedListElement<T> nextElement = temp.next;
+            nextElement.prev = prevElement;
+            prevElement.next = nextElement;
+            size--;
+            return;
+        }
+
+        throw new IllegalArgumentException(outOfRangeError);
+    }
+
 
     public T getValueByIndex(int index) {
 
