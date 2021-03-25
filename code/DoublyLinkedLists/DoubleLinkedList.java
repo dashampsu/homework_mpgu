@@ -170,11 +170,21 @@ public class DoubleLinkedList<T> {
         if (counter == id) {
             // if element is found
 
+            if (temp.prev == null && temp.next == null) {
+                // if the element is the only one
+                head = null;
+                tail = null;
+                size--;
+                return;
+
+            }
+
             if (temp.prev == null) {
                 // if it's the first element
 
                 head = temp.next;
                 head.prev = null;
+                size--;
                 return;
             }
 
@@ -183,6 +193,7 @@ public class DoubleLinkedList<T> {
 
                 tail = temp.prev;
                 tail.next = null;
+                size--;
                 return;
             }
 
@@ -283,7 +294,7 @@ public class DoubleLinkedList<T> {
     public int findFirstOccurance(T data) {
         // возвращает индекс первого вхождения
 
-        if (size < 1) {
+        if (isEmpty()) {
             throw new RuntimeException(listIsEmptyError);
         }
 
@@ -312,7 +323,7 @@ public class DoubleLinkedList<T> {
     public DoubleLinkedListElement<T> findFirstNodeByValue(T data) {
         // возвращает индекс первого вхождения
 
-        if (size < 1) {
+        if (isEmpty()) {
             throw new RuntimeException(listIsEmptyError);
         }
 
@@ -353,7 +364,8 @@ public class DoubleLinkedList<T> {
 
     public void printAll() {
         if (isEmpty()) {
-            throw new RuntimeException(listIsEmptyError);
+            System.out.println();
+            return;
         }
 
         DoubleLinkedListElement<T> iterator = head;
