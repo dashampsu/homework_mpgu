@@ -42,4 +42,17 @@ public class DeckTests {
         int actual = deck.peekFront();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void peekFront_dataTest() {
+        Deck<Integer> deck = new Deck<Integer>();
+
+        deck.pushBack(1);
+        deck.pushBack(2);
+        deck.pushBack(3);
+
+        int expected = 1;
+        int actual = deck.peekFront();
+        assertEquals(expected, actual);
+    }
 }
