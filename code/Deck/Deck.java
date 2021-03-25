@@ -7,13 +7,11 @@ public class Deck<T> {
     DoubleLinkedList<T> list = new DoubleLinkedList<T>();
     int size = 0;
 
+    public static String emptyDeckError = "The deck is empty";
+
     public void pushFront(T value) {
         list.insert(value);
         size++;
-    }
-
-    public T peekFront() {
-        return list.head.getData();
     }
 
     public void popFront() {
@@ -25,14 +23,19 @@ public class Deck<T> {
         size--;
     }
 
+    public T peekFront() {
+
+        if (list.head != null) {
+            return list.head.getData();
+        }
+
+        throw new RuntimeException(emptyDeckError);
+    }
+
 
     public void pushBack(T value) {
         list.append(value);
         size++;
-    }
-
-    public T peekBack() {
-        return list.tail.getData();
     }
 
     public void popBack() {
@@ -42,6 +45,10 @@ public class Deck<T> {
 
         list.removeElement(size-1);
         size--;
+    }
+
+    public T peekBack() {
+        return list.tail.getData();
     }
 
     public void printAll() {
