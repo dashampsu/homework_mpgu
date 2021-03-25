@@ -9,6 +9,7 @@ public class Deck<T> {
 
     public void push_front(T value) {
         list.insert(value);
+        size++;
     }
 
     public T peek_front() {
@@ -17,15 +18,22 @@ public class Deck<T> {
 
     public void pop_front() {
         list.removeElement(0);
+        size--;
     }
 
 
     public void push_back(T value) {
         list.append(value);
+        size++;
     }
 
     public T peek_back() {
         return list.tail.getData();
+    }
+
+    public void pop_back() {
+        list.removeElement(size);
+        size--;
     }
 
     public void printAll() {
