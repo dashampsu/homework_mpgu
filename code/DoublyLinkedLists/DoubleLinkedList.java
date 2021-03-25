@@ -22,6 +22,8 @@ public class DoubleLinkedList<T> {
     }
 
     public void insert(T data) {
+        // inserts node before the first node
+
         DoubleLinkedListElement<T> newNode = new DoubleLinkedListElement<T>(null, data, head);
 
         if (head == null) {
@@ -37,6 +39,8 @@ public class DoubleLinkedList<T> {
     }
 
     public void append(T data) {
+        // inserts node after the last node
+
         DoubleLinkedListElement<T> newNode = new DoubleLinkedListElement<T>(tail, data, null);
 
         if (head == null) {
