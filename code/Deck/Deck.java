@@ -10,4 +10,8 @@ public class Deck<T> {
     public void push_front(T value) {
         list.insert(value);
     }
+
+    public void push_back(T value) {
+        list.append(value);
+    }
 }
