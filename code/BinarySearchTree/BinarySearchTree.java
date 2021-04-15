@@ -119,14 +119,18 @@ public class BinarySearchTree {
 
         Node nextNode;
         if (reversed) {
-            nextNode = getPredecessor(focusNode);
+            nextNode = getPredecessorRec(focusNode);
         } else {
-            nextNode = getSuccessor(focusNode);
+            nextNode = getSuccessorRec(focusNode);
         }
         printAllRec(nextNode, reversed);
     }
 
-    public static Node getPredecessor(Node focusNode) {
+    public Node getPredecessor(Node focusNode) {
+        return getPredecessorRec(focusNode);
+    }
+
+    private static Node getPredecessorRec(Node focusNode) {
         if (nodeExists(focusNode, "left")) {
             focusNode = focusNode.leftNode;
             while (nodeExists(focusNode, "right")) {
@@ -152,7 +156,11 @@ public class BinarySearchTree {
         }
     }
 
-    public static Node getSuccessor(Node focusNode) {
+    public Node getSuccessor(Node focusNode) {
+        return getSuccessorRec(focusNode);
+    }
+
+    private static Node getSuccessorRec(Node focusNode) {
         if (nodeExists(focusNode, "right")) {
             focusNode = focusNode.rightNode;
             while (focusNode.leftNode != null) {
