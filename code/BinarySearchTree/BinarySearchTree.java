@@ -157,41 +157,38 @@ public class BinarySearchTree {
     public void delete(String key) {
         Node focusNode = search(key);
         Node focusNodeParent = focusNode.parentNode;
-        boolean isLeft = false;
+        boolean isLeftChild = false;
         if (nodeExists(focusNodeParent, "left")) {
-            isLeft = key.equals(focusNodeParent.leftNode.key);
+            isLeftChild = key.equals(focusNodeParent.leftNode.key);
         }
 
         if (countChildren(focusNode) == 1) {
             if (nodeExists(focusNode, "left")) {
                 // if the node only has left child
-
-                if (isLeft) {
-                    focusNodeParent.leftNode = null;
-                    focusNodeParent.leftNode = focusNode.leftNode;
-                    focusNode.leftNode.parentNode = focusNodeParent;
+                Node newChild = focusNode.leftNode; // copy new child
+                focusNode.leftNode.parentNode = null; // delete focusNode from memory
+                if (isLeftChild) {
+                    focusNodeParent.leftNode = newChild; // link parent to child
                 } else {
-                    focusNodeParent.rightNode = null;
-                    focusNodeParent.rightNode = focusNode.leftNode;
-                    focusNode.leftNode.parentNode = focusNodeParent;
+                    focusNodeParent.rightNode = newChild;
                 }
+                newChild.parentNode = focusNodeParent; // link child to parent
+
             } else {
                 // if the node only has right child
-
-                if (!isLeft) {
-                    focusNodeParent.leftNode = null;
-                    focusNodeParent.leftNode = focusNode.rightNode;
-                    focusNode.rightNode.parentNode = focusNodeParent;
+                Node newChild = focusNode.rightNode;
+                focusNode.rightNode.parentNode = null;
+                if (isLeftChild) {
+                    focusNodeParent.leftNode = newChild;
                 } else {
-                    focusNodeParent.rightNode = null;
-                    focusNodeParent.rightNode = focusNode.rightNode;
-                    focusNode.rightNode.parentNode = focusNodeParent;
+                    focusNodeParent.rightNode = newChild;
                 }
+                newChild.parentNode = focusNodeParent;
             }
         }
 
         else if (countChildren(focusNode) == 0) {
-            if (isLeft) {
+            if (isLeftChild) {
                 focusNodeParent.leftNode = null;
             } else {
                 focusNodeParent.rightNode = null;

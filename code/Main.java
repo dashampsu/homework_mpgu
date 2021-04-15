@@ -8,17 +8,30 @@ public class Main {
         tree.insert("abcd");
         tree.insert("abcdefghijk");
         tree.insert("abcdefghi");
-        tree.insert("a");
+        tree.insert("ab");
         tree.insert("abcdefghijklmnopq");
         tree.insert("abcdefghijklmn");
         tree.insert("abcde");
+        tree.insert("a");
+        tree.insert("abcdefghijklmno");
 
+        tree.printAll(false);
+        System.out.println();
+
+        tree.delete("ab");
         tree.printAll(false);
         System.out.println();
 
         tree.delete("abcdefghijklmn");
         tree.printAll(false);
+        System.out.println();
 
-//        System.out.println(tree.search("abcdefghijklmn").getParentNode().getKey());
+        tree.delete("abcdefghijklmnopq");
+        tree.printAll(false);
+        System.out.println();
+
+        tree.delete("abcd");
+        tree.printAll(false);
+        System.out.println();
     }
 }
