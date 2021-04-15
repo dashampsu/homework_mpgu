@@ -6,7 +6,8 @@ public class Main {
         BinarySearchTree tree = new BinarySearchTree();
         tree.insert("abc");
         tree.insert("abcd");
-        tree.insert("abcdefg");
+        tree.insert("abcdefghijk");
+        tree.insert("abcdefghi");
 
         tree.printAll();
     }

@@ -89,39 +89,37 @@ public class BinarySearchTree {
     private static boolean nodeExists(Node focusNode, String whatNode) {
         boolean doesExist;
 
-        if (whatNode.equals("right")) {
-            try {
-                // if rightNode exists, returns true
-                doesExist = focusNode.rightNode != null;
-            } catch (Exception NullPointerException) {
-                doesExist = false;
+        switch (whatNode) {
+            case "right" -> {
+                try {
+                    // if rightNode exists, returns true
+                    doesExist = focusNode.rightNode != null;
+                } catch (Exception NullPointerException) {
+                    doesExist = false;
+                }
+                return doesExist;
             }
 
-            return doesExist;
-        }
-
-        else if (whatNode.equals("left")) {
-            try {
-                // if leftNode exists, returns true
-                doesExist = focusNode.leftNode != null;
-            } catch (Exception NullPointerException) {
-                doesExist = false;
+            case "left" -> {
+                try {
+                    // if leftNode exists, returns true
+                    doesExist = focusNode.leftNode != null;
+                } catch (Exception NullPointerException) {
+                    doesExist = false;
+                }
+                return doesExist;
             }
-            return doesExist;
-        }
 
-        else if (whatNode.equals("parent")) {
-            try {
-                // if parentNode exists, returns true
-                doesExist = focusNode.parentNode != null;
-            } catch (Exception NullPointerException) {
-                doesExist = false;
+            case "parent" -> {
+                try {
+                    // if parentNode exists, returns true
+                    doesExist = focusNode.parentNode != null;
+                } catch (Exception NullPointerException) {
+                    doesExist = false;
+                }
+                return doesExist;
             }
-            return doesExist;
-        }
-
-        else {
-            throw new RuntimeException("wrong node name");
+            default -> throw new RuntimeException("wrong node name");
         }
     }
 }
