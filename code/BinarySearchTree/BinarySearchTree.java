@@ -1,18 +1,18 @@
 package BinarySearchTree;
 
 public class BinarySearchTree {
-    Node root = new Node();
+    Node root;
 
     public BinarySearchTree() {
 
     }
 
     public BinarySearchTree(String key) {
-        root.key = key;
+        root = new Node(key);
     }
 
     public void insert(String key) {
-        if (root.key == null) {
+        if (root == null) {
             root = new Node(key);
             return;
         }
@@ -27,6 +27,7 @@ public class BinarySearchTree {
 
             if (focusNode.rightNode == null) {
                 focusNode.rightNode = new Node(key);
+                focusNode.rightNode.parentNode = focusNode;
                 return;
             } else {
                 // if the right child does exist
@@ -40,11 +41,44 @@ public class BinarySearchTree {
 
             if (focusNode.leftNode == null) {
                 focusNode.leftNode = new Node(key);
+                focusNode.leftNode.parentNode = focusNode;
                 return;
             } else {
                 // if the left child does exist
                 insertRec(key, focusNode.leftNode);
             }
+        }
+    }
+
+    public void printAll() {
+        printAllRec(root);
+    }
+
+    private static void printAllRec(Node focusNode){
+        //
+    }
+
+    private Node getSuccessor(Node focusNode) {
+        if (focusNode.rightNode != null) {
+            focusNode = focusNode.rightNode;
+            while (focusNode.leftNode != null) {
+                focusNode = focusNode.leftNode;
+            }
+            return focusNode;
+        } else {
+            // if the right node doesn't exist
+            while (focusNode.parentNode != null) {
+                Node focusNodeParent = focusNode.parentNode;
+                if (focusNodeParent.leftNode.equals(focusNode)) {
+                    // if parent element has a left child
+                    // and this left child is the focus node
+                    return focusNodeParent;
+                } else {
+                    focusNode = focusNodeParent;
+                }
+            }
+
+            return null;
         }
     }
 }
