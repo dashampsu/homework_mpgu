@@ -98,19 +98,32 @@ public class BinarySearchTree {
     }
 
     public void printAll(boolean reversed) {
-        // reversed - from max to min
-        // normal - min to max
-        printAllRec(getMin());
+        // reversed - from min to max
+        // normal - max to min
+
+        reversed = !reversed;
+
+        if (reversed) {
+            printAllRec(getMax(), reversed);
+        } else {
+            printAllRec(getMin(), reversed);
+        }
     }
 
-    private static void printAllRec(Node focusNode){
+    private static void printAllRec(Node focusNode, boolean reversed){
         if (focusNode == null) {
             return;
         }
 
         System.out.println(focusNode.key);
-        Node nextNode = getSuccessor(focusNode);
-        printAllRec(nextNode);
+
+        Node nextNode;
+        if (reversed) {
+            nextNode = getPredecessor(focusNode);
+        } else {
+            nextNode = getSuccessor(focusNode);
+        }
+        printAllRec(nextNode, reversed);
     }
 
     public static Node getPredecessor(Node focusNode) {

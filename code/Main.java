@@ -11,8 +11,10 @@ public class Main {
         tree.insert("a");
         tree.insert("abcdefghijklmnopq");
 
-        System.out.println(tree.getMax().getKey());
+//        System.out.println(tree.getMax().getKey());
 
+        tree.printAll(false);
+        System.out.println();
         tree.printAll(true);
 
 //        Node node = tree.search("abcdefghi");
