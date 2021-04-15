@@ -155,64 +155,47 @@ public class BinarySearchTree {
     }
 
     public void delete(String key) {
-        Node focusNode = getMax();
+        Node focusNode = search(key);
+        Node focusNodeParent = focusNode.parentNode;
+        boolean isLeft = false;
+        if (nodeExists(focusNodeParent, "left")) {
+            isLeft = key.equals(focusNodeParent.leftNode.key);
+        }
 
-        while (focusNode != null) {
-            if (key.equals(focusNode.key)) {
-                Node focusNodeParent = focusNode.parentNode;
+        if (countChildren(focusNode) == 1) {
+            if (nodeExists(focusNode, "left")) {
+                // if the node only has left child
 
-                if (nodeExists(focusNodeParent, "left")) {
-                    if (key.equals(focusNodeParent.leftNode.key)) {
-                        // if parent node has left child
-                        // and that child has the key value
-
-                        if (countChildren(focusNode) == 1) {
-                            if (nodeExists(focusNode, "left")) {
-                                focusNodeParent.leftNode = null;
-                                focusNodeParent.leftNode = focusNode.leftNode;
-                                focusNode.leftNode.parentNode = focusNodeParent;
-                                return;
-                            } else {
-                                focusNodeParent.leftNode = null;
-                                focusNodeParent.leftNode = focusNode.rightNode;
-                                focusNode.rightNode.parentNode = focusNodeParent;
-                                return;
-                            }
-                        }
-
-                        else if (countChildren(focusNode) == 0) {
-                            focusNodeParent.leftNode = null;
-                        }
-                    }
+                if (isLeft) {
+                    focusNodeParent.leftNode = null;
+                    focusNodeParent.leftNode = focusNode.leftNode;
+                    focusNode.leftNode.parentNode = focusNodeParent;
+                } else {
+                    focusNodeParent.rightNode = null;
+                    focusNodeParent.rightNode = focusNode.leftNode;
+                    focusNode.leftNode.parentNode = focusNodeParent;
                 }
+            } else {
+                // if the node only has right child
 
-                if (nodeExists(focusNodeParent, "right")) {
-                    if (key.equals(focusNodeParent.rightNode.key)) {
-                        // if the parent node has right child
-                        // and that child has the key value
-
-                        if (countChildren(focusNode) == 1) {
-                            if (nodeExists(focusNode, "left")) {
-                                focusNodeParent.rightNode = null;
-                                focusNodeParent.rightNode = focusNode.leftNode;
-                                focusNode.leftNode.parentNode = focusNodeParent;
-                                return;
-                            } else {
-                                focusNodeParent.rightNode = null;
-                                focusNodeParent.rightNode = focusNode.rightNode;
-                                focusNode.rightNode.parentNode = focusNodeParent;
-                                return;
-                            }
-                        }
-
-                        else if (countChildren(focusNode) == 0) {
-                            focusNodeParent.rightNode = null;
-                        }
-                    }
+                if (!isLeft) {
+                    focusNodeParent.leftNode = null;
+                    focusNodeParent.leftNode = focusNode.rightNode;
+                    focusNode.rightNode.parentNode = focusNodeParent;
+                } else {
+                    focusNodeParent.rightNode = null;
+                    focusNodeParent.rightNode = focusNode.rightNode;
+                    focusNode.rightNode.parentNode = focusNodeParent;
                 }
             }
+        }
 
-            focusNode = getPredecessor(focusNode);
+        else if (countChildren(focusNode) == 0) {
+            if (isLeft) {
+                focusNodeParent.leftNode = null;
+            } else {
+                focusNodeParent.rightNode = null;
+            }
         }
     }
 

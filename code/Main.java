@@ -16,7 +16,7 @@ public class Main {
         tree.printAll(false);
         System.out.println();
 
-        tree.delete("abcd");
+        tree.delete("abcdefghijklmn");
         tree.printAll(false);
 
 //        System.out.println(tree.search("abcdefghijklmn").getParentNode().getKey());
