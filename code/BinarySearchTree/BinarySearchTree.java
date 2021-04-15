@@ -79,6 +79,15 @@ public class BinarySearchTree {
         return null;
     }
 
+    public Node getMin() {
+        Node focusNode = root;
+        while (nodeExists(focusNode, "left")) {
+            focusNode = focusNode.leftNode;
+        }
+
+        return focusNode;
+    }
+
     public void printAll() {
         printAllRec(root);
     }
