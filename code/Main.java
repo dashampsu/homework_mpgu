@@ -9,6 +9,9 @@ public class Main {
         tree.insert("abcdefghijk");
         tree.insert("abcdefghi");
         tree.insert("a");
+        tree.insert("abcdefghijklmnopq");
+
+        System.out.println(tree.getMax().getKey());
 
         tree.printAll(true);
 

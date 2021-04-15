@@ -88,6 +88,15 @@ public class BinarySearchTree {
         return focusNode;
     }
 
+    public Node getMax() {
+        Node focusNode = root;
+        while (nodeExists(focusNode, "right")) {
+            focusNode = focusNode.rightNode;
+        }
+
+        return focusNode;
+    }
+
     public void printAll(boolean reversed) {
         // reversed - from max to min
         // normal - min to max
