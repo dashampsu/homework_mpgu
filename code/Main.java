@@ -13,5 +13,9 @@ public class Main {
         tree.insert("abcdefghijklmn");
 
         tree.printAll(false);
+        System.out.println();
+
+        tree.delete("abcdefghijklmnopq");
+        tree.printAll(false);
     }
 }

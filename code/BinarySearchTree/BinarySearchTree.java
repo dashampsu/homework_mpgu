@@ -154,7 +154,75 @@ public class BinarySearchTree {
         }
     }
 
+    public void delete(String key) {
+        Node focusNode = getMax();
 
+        while (focusNode != null) {
+            if (key.equals(focusNode.key)) {
+                Node focusNodeParent = focusNode.parentNode;
+
+                if (nodeExists(focusNodeParent, "left")) {
+                    if (key.equals(focusNodeParent.leftNode.key)) {
+                        // if parent node has left child
+                        // and that child has the key value
+
+                        if (countChildren(focusNode) == 1) {
+                            if (nodeExists(focusNode, "left")) {
+                                focusNodeParent.leftNode = null;
+                                focusNodeParent.leftNode = focusNode.leftNode;
+                                return;
+                            } else {
+                                focusNodeParent.leftNode = null;
+                                focusNodeParent.leftNode = focusNode.rightNode;
+                                return;
+                            }
+                        }
+
+                        else if (countChildren(focusNode) == 0) {
+                            focusNodeParent.leftNode = null;
+                        }
+                    }
+                }
+
+                if (nodeExists(focusNodeParent, "right")) {
+                    if (key.equals(focusNodeParent.rightNode.key)) {
+                        // if the parent node has right child
+                        // and that child has the key value
+
+                        if (countChildren(focusNode) == 1) {
+                            if (nodeExists(focusNode, "left")) {
+                                focusNodeParent.rightNode = null;
+                                focusNodeParent.rightNode = focusNode.leftNode;
+                                return;
+                            } else {
+                                focusNodeParent.rightNode = null;
+                                focusNodeParent.rightNode = focusNode.rightNode;
+                                return;
+                            }
+                        }
+
+                        else if (countChildren(focusNode) == 0) {
+                            focusNodeParent.rightNode = null;
+                        }
+                    }
+                }
+            }
+
+            focusNode = getPredecessor(focusNode);
+        }
+    }
+
+    private static int countChildren(Node focusNode) {
+        int count = 0;
+        if (nodeExists(focusNode, "left")) {
+            count++;
+        }
+
+        if (nodeExists(focusNode, "right")) {
+            count++;
+        }
+        return count;
+    }
 
     public void printAll(boolean reversed) {
         // reversed - from min to max
