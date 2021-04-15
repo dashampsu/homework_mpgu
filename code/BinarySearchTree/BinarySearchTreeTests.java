@@ -91,4 +91,28 @@ public class BinarySearchTreeTests {
         actual = tree.getSuccessor(tree.search("abcdefgh")).getKey();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void getPredecessor_positive() {
+        BinarySearchTree tree = new BinarySearchTree("abcdefgh");
+        tree.insert("abc");
+        tree.insert("abcd");
+        tree.insert("abcdefghijk");
+        tree.insert("abcdefghi");
+        tree.insert("ab");
+        tree.insert("abcdefghijklmnopqrst");
+        tree.insert("abcdefghijklmnopq");
+        tree.insert("abcde");
+        tree.insert("a");
+        tree.insert("abcdefghijklmnop");
+        tree.insert("abcdefghijklmnopqr");
+
+        String expected = "abcde";
+        String actual = tree.getPredecessor(tree.search("abcdefgh")).getKey();
+        assertEquals(expected, actual);
+
+        expected = "abcdefghi";
+        actual = tree.getPredecessor(tree.search("abcdefghijk")).getKey();
+        assertEquals(expected, actual);
+    }
 }
