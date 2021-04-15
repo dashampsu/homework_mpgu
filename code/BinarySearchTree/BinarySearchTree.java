@@ -3,60 +3,48 @@ package BinarySearchTree;
 public class BinarySearchTree {
     Node root = new Node();
 
+    public BinarySearchTree() {
+
+    }
+
     public BinarySearchTree(String key) {
         root.key = key;
     }
 
-    public Node search(String key) {
-        return searchRec(key, root);
-    }
-
     public void insert(String key) {
-        if (root == null) {
+        if (root.key == null) {
             root = new Node(key);
+            return;
         }
+
+        insertRec(key, root);
     }
 
-    public String getKey(Node node) {
-        return node.key;
-    }
+    private static void insertRec(String key, Node focusNode) {
+        if (key.compareTo(focusNode.key) > 0) {
+            // if the node is to be placed on the right
+            // (if new key is greater than the focusNode key)
 
-    private static Node searchRec(String key, Node root) {
-        String rootKey = root.key;
-        if (rootKey.equals(key)) {
-            return root;
+            if (focusNode.rightNode == null) {
+                focusNode.rightNode = new Node(key);
+                return;
+            } else {
+                // if the right child does exist
+                insertRec(key, focusNode.rightNode);
+            }
         }
 
-        if (rootKey.compareTo(key) < key.compareTo(rootKey)) {
-            return searchRec(key, root.rightNode);
-        }
+        if (key.compareTo(focusNode.key) <= 0) {
+            // if the node is to be placed on the left
+            // (if new key is lesser than the focusNode key)
 
-        return searchRec(key, root.leftNode);
-    }
-
-
-
-
-
-
-    private static class Node {
-        String key;
-        Node parentNode;
-        Node rightNode;
-        Node leftNode;
-
-        public Node() {
-            parentNode = null;
-            rightNode = null;
-            leftNode = null;
-            key = null;
-        }
-
-        public Node(String key) {
-            parentNode = null;
-            rightNode = null;
-            leftNode = null;
-            this.key = key;
+            if (focusNode.leftNode == null) {
+                focusNode.leftNode = new Node(key);
+                return;
+            } else {
+                // if the left child does exist
+                insertRec(key, focusNode.leftNode);
+            }
         }
     }
 }
