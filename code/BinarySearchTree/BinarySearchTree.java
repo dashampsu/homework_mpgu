@@ -16,7 +16,6 @@ public class BinarySearchTree {
             root = new Node(key);
             return;
         }
-
         insertRec(key, root);
     }
 
@@ -56,13 +55,11 @@ public class BinarySearchTree {
     private static Node searchRec(String key, Node focusNode) {
         if (focusNode == null) {
             // if last node and not found
-
             return null;
         }
 
         if (key.equals(focusNode.key)) {
             // if node is found
-
             return focusNode;
         }
 
@@ -75,7 +72,6 @@ public class BinarySearchTree {
         else if (key.compareTo(focusNode.key) < 0) {
             return searchRec(key, focusNode.leftNode);
         }
-
         return null;
     }
 
@@ -160,6 +156,10 @@ public class BinarySearchTree {
         boolean isLeftChild = false;
         if (nodeExists(focusNodeParent, "left")) {
             isLeftChild = key.equals(focusNodeParent.leftNode.key);
+        }
+
+        if (countChildren(focusNode) == 2) {
+            //
         }
 
         if (countChildren(focusNode) == 1) {
