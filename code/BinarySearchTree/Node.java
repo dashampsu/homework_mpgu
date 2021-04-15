@@ -19,4 +19,8 @@ public class Node {
         rightNode = null;
         leftNode = null;
     }
+
+    public String getKey() {
+        return key;
+    }
 }

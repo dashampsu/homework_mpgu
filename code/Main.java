@@ -1,4 +1,4 @@
-import BinarySearchTree.BinarySearchTree;
+import BinarySearchTree.*;
 
 public class Main {
 
@@ -10,5 +10,8 @@ public class Main {
         tree.insert("abcdefghi");
 
         tree.printAll();
+
+        Node node = tree.search("abcdefghi");
+        System.out.println(node.getKey());
     }
 }
