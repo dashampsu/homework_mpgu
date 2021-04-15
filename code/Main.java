@@ -1,11 +1,8 @@
-import DoublyLinkedLists.*;
-import Stack.*;
-import Queue.*;
-import Deck.*;
+import BinarySearchTree.BinarySearchTree;
 
 public class Main {
 
     public static void main(String[] args) {
-        // Task 8 complete
+        BinarySearchTree tree = new BinarySearchTree("hey");
     }
 }
