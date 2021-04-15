@@ -97,35 +97,6 @@ public class BinarySearchTree {
         return focusNode;
     }
 
-    public void printAll(boolean reversed) {
-        // reversed - from min to max
-        // normal - max to min
-
-        reversed = !reversed;
-
-        if (reversed) {
-            printAllRec(getMax(), reversed);
-        } else {
-            printAllRec(getMin(), reversed);
-        }
-    }
-
-    private static void printAllRec(Node focusNode, boolean reversed){
-        if (focusNode == null) {
-            return;
-        }
-
-        System.out.println(focusNode.key);
-
-        Node nextNode;
-        if (reversed) {
-            nextNode = getPredecessorRec(focusNode);
-        } else {
-            nextNode = getSuccessorRec(focusNode);
-        }
-        printAllRec(nextNode, reversed);
-    }
-
     public Node getPredecessor(Node focusNode) {
         return getPredecessorRec(focusNode);
     }
@@ -181,6 +152,37 @@ public class BinarySearchTree {
             }
             return null;
         }
+    }
+
+
+
+    public void printAll(boolean reversed) {
+        // reversed - from min to max
+        // normal - max to min
+
+        reversed = !reversed;
+
+        if (reversed) {
+            printAllRec(getMax(), reversed);
+        } else {
+            printAllRec(getMin(), reversed);
+        }
+    }
+
+    private static void printAllRec(Node focusNode, boolean reversed){
+        if (focusNode == null) {
+            return;
+        }
+
+        System.out.println(focusNode.key);
+
+        Node nextNode;
+        if (reversed) {
+            nextNode = getPredecessorRec(focusNode);
+        } else {
+            nextNode = getSuccessorRec(focusNode);
+        }
+        printAllRec(nextNode, reversed);
     }
 
     private static boolean nodeExists(Node focusNode, String whatNode) {
