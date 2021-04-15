@@ -4,7 +4,7 @@ public class BinarySearchTree {
     Node root;
 
     public BinarySearchTree() {
-
+        root = new Node();
     }
 
     public BinarySearchTree(String key) {
@@ -12,7 +12,7 @@ public class BinarySearchTree {
     }
 
     public void insert(String key) {
-        if (root == null) {
+        if (root.key == null) {
             root = new Node(key);
             return;
         }
@@ -42,7 +42,6 @@ public class BinarySearchTree {
             if (focusNode.leftNode == null) {
                 focusNode.leftNode = new Node(key);
                 focusNode.leftNode.parentNode = focusNode;
-                return;
             } else {
                 // if the left child does exist
                 insertRec(key, focusNode.leftNode);
@@ -55,11 +54,17 @@ public class BinarySearchTree {
     }
 
     private static void printAllRec(Node focusNode){
-        //
+        if (focusNode == null) {
+            return;
+        }
+
+        System.out.println(focusNode.key);
+        Node nextNode = getSuccessor(focusNode);
+        printAllRec(nextNode);
     }
 
-    private Node getSuccessor(Node focusNode) {
-        if (focusNode.rightNode != null) {
+    private static Node getSuccessor(Node focusNode) {
+        if (nodeExists(focusNode, "right")) {
             focusNode = focusNode.rightNode;
             while (focusNode.leftNode != null) {
                 focusNode = focusNode.leftNode;
@@ -67,9 +72,9 @@ public class BinarySearchTree {
             return focusNode;
         } else {
             // if the right node doesn't exist
-            while (focusNode.parentNode != null) {
+            while (nodeExists(focusNode, "parent")) {
                 Node focusNodeParent = focusNode.parentNode;
-                if (focusNodeParent.leftNode.equals(focusNode)) {
+                if (focusNodeParent.leftNode == focusNode) {
                     // if parent element has a left child
                     // and this left child is the focus node
                     return focusNodeParent;
@@ -77,8 +82,46 @@ public class BinarySearchTree {
                     focusNode = focusNodeParent;
                 }
             }
-
             return null;
+        }
+    }
+
+    private static boolean nodeExists(Node focusNode, String whatNode) {
+        boolean doesExist;
+
+        if (whatNode.equals("right")) {
+            try {
+                // if rightNode exists, returns true
+                doesExist = focusNode.rightNode != null;
+            } catch (Exception NullPointerException) {
+                doesExist = false;
+            }
+
+            return doesExist;
+        }
+
+        else if (whatNode.equals("left")) {
+            try {
+                // if leftNode exists, returns true
+                doesExist = focusNode.leftNode != null;
+            } catch (Exception NullPointerException) {
+                doesExist = false;
+            }
+            return doesExist;
+        }
+
+        else if (whatNode.equals("parent")) {
+            try {
+                // if parentNode exists, returns true
+                doesExist = focusNode.parentNode != null;
+            } catch (Exception NullPointerException) {
+                doesExist = false;
+            }
+            return doesExist;
+        }
+
+        else {
+            throw new RuntimeException("wrong node name");
         }
     }
 }

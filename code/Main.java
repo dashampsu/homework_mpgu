@@ -7,5 +7,7 @@ public class Main {
         tree.insert("abc");
         tree.insert("abcd");
         tree.insert("abcdefg");
+
+        tree.printAll();
     }
 }
