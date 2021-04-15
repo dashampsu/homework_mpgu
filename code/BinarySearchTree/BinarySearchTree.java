@@ -170,10 +170,12 @@ public class BinarySearchTree {
                             if (nodeExists(focusNode, "left")) {
                                 focusNodeParent.leftNode = null;
                                 focusNodeParent.leftNode = focusNode.leftNode;
+                                focusNode.leftNode.parentNode = focusNodeParent;
                                 return;
                             } else {
                                 focusNodeParent.leftNode = null;
                                 focusNodeParent.leftNode = focusNode.rightNode;
+                                focusNode.rightNode.parentNode = focusNodeParent;
                                 return;
                             }
                         }
@@ -193,10 +195,12 @@ public class BinarySearchTree {
                             if (nodeExists(focusNode, "left")) {
                                 focusNodeParent.rightNode = null;
                                 focusNodeParent.rightNode = focusNode.leftNode;
+                                focusNode.leftNode.parentNode = focusNodeParent;
                                 return;
                             } else {
                                 focusNodeParent.rightNode = null;
                                 focusNodeParent.rightNode = focusNode.rightNode;
+                                focusNode.rightNode.parentNode = focusNodeParent;
                                 return;
                             }
                         }

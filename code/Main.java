@@ -11,11 +11,14 @@ public class Main {
         tree.insert("a");
         tree.insert("abcdefghijklmnopq");
         tree.insert("abcdefghijklmn");
+        tree.insert("abcde");
 
         tree.printAll(false);
         System.out.println();
 
-        tree.delete("abcdefghijklmnopq");
+        tree.delete("abcd");
         tree.printAll(false);
+
+//        System.out.println(tree.search("abcdefghijklmn").getParentNode().getKey());
     }
 }

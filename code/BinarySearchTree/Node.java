@@ -23,4 +23,8 @@ public class Node {
     public String getKey() {
         return key;
     }
+
+    public Node getParentNode() {
+        return parentNode;
+    }
 }
