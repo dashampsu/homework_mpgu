@@ -21,21 +21,5 @@ public class Main {
 
         tree.delete("abcdefghijklmnopqrst");
         tree.printAll(false);
-
-//        tree.delete("ab");
-//        tree.printAll(false);
-//        System.out.println();
-//
-//        tree.delete("abcdefghijklmn");
-//        tree.printAll(false);
-//        System.out.println();
-//
-//        tree.delete("abcdefghijklmnopq");
-//        tree.printAll(false);
-//        System.out.println();
-//
-//        tree.delete("abcd");
-//        tree.printAll(false);
-//        System.out.println();
     }
 }
