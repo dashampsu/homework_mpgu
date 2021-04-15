@@ -88,8 +88,10 @@ public class BinarySearchTree {
         return focusNode;
     }
 
-    public void printAll() {
-        printAllRec(root);
+    public void printAll(boolean reversed) {
+        // reversed - from max to min
+        // normal - min to max
+        printAllRec(getMin());
     }
 
     private static void printAllRec(Node focusNode){

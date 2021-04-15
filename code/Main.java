@@ -10,7 +10,7 @@ public class Main {
         tree.insert("abcdefghi");
         tree.insert("a");
 
-        tree.printAll();
+        tree.printAll(true);
 
 //        Node node = tree.search("abcdefghi");
 //        System.out.println(node.getKey());
