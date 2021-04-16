@@ -3,6 +3,8 @@ package BinarySearchTree;
 public class BinarySearchTree {
     Node root;
 
+    public static final String not_found = "The item is not found";
+
     public BinarySearchTree() {
         root = new Node();
     }
@@ -152,6 +154,9 @@ public class BinarySearchTree {
 
     public void delete(String key) {
         Node focusNode = search(key);
+        if (focusNode == null) {
+            return;
+        }
         Node focusNodeParent = focusNode.parentNode;
         boolean isLeftChild = false;
         if (nodeExists(focusNodeParent, "left")) {

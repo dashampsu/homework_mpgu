@@ -19,7 +19,6 @@ public class Main {
         tree.printAll(false);
         System.out.println();
 
-        tree.delete("abcdefghijklmnopqrst");
-        tree.printAll(false);
+        System.out.println();
     }
 }
