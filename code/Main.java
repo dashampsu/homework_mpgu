@@ -24,5 +24,7 @@ public class Main {
         tree.delete("abc");
 
         System.out.println(TreePrinter.getTreeDisplay(tree.search("abcdefgh")));
+
+        // task 9 complete
     }
 }
