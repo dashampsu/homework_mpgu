@@ -24,6 +24,14 @@ public class Node {
         return key;
     }
 
+    public Node getLeft() {
+        return leftNode;
+    }
+
+    public Node getRight() {
+        return rightNode;
+    }
+
     public Node getParentNode() {
         return parentNode;
     }
