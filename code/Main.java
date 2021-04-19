@@ -14,11 +14,14 @@ public class Main {
         tree.insert("abcdefghijklmnopq");
         tree.insert("abcde");
         tree.insert("a");
-        tree.insert("abcdefghijklmnop");
+        tree.insert("abcdefghijklmno");
         tree.insert("abcdefghijklmnopqr");
 
-//        tree.printAll(false);
-//        System.out.println();
+        tree.printAll(false);
+
+        System.out.println(TreePrinter.getTreeDisplay(tree.search("abcdefgh")));
+
+        tree.delete("abc");
 
         System.out.println(TreePrinter.getTreeDisplay(tree.search("abcdefgh")));
     }

@@ -157,6 +157,7 @@ public class BinarySearchTree {
         if (focusNode == null) {
             return;
         }
+
         Node focusNodeParent = focusNode.parentNode;
         boolean isLeftChild = false;
         if (nodeExists(focusNodeParent, "left")) {
@@ -164,10 +165,18 @@ public class BinarySearchTree {
         }
 
         if (countChildren(focusNode) == 2) {
-            //
+            Node focusNodeSuccessor = getSuccessor(focusNode);
+            focusNodeSuccessor.leftNode = focusNode.leftNode;
+            if (isLeftChild) {
+                focusNodeParent.leftNode = focusNodeSuccessor;
+            } else {
+                focusNodeParent.rightNode = focusNodeSuccessor;
+            }
+
+            focusNode.rightNode.parentNode = null;
         }
 
-        if (countChildren(focusNode) == 1) {
+        else if (countChildren(focusNode) == 1) {
             if (nodeExists(focusNode, "left")) {
                 // if the node only has left child
                 Node newChild = focusNode.leftNode; // copy new child
