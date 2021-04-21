@@ -16,15 +16,8 @@ public class Main {
         tree.insert("a");
         tree.insert("abcdefghijklmno");
         tree.insert("abcdefghijklmnopqr");
-
-        tree.printAll(false);
-
         System.out.println(TreePrinter.getTreeDisplay(tree.search("abcdefgh")));
 
-        tree.delete("abc");
 
-        System.out.println(TreePrinter.getTreeDisplay(tree.search("abcdefgh")));
-
-        // task 9 complete
     }
 }
