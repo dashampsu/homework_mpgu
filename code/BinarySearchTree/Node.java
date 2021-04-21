@@ -64,4 +64,8 @@ public class Node {
 
         return -2;
     }
+
+    public int getBalance() {
+        return leftNode.getHeight() - rightNode.getHeight();
+    }
 }
