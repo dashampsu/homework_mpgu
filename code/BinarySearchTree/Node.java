@@ -2,7 +2,6 @@ package BinarySearchTree;
 
 public class Node {
     String key;
-    int height;
     Node parentNode;
     Node rightNode;
     Node leftNode;

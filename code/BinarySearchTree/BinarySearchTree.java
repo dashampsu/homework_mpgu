@@ -222,6 +222,37 @@ public class BinarySearchTree {
         return count;
     }
 
+    public void rightRotate(Node focusNode) {
+        Node parentNode = focusNode.parentNode;
+        Node leftChild = focusNode.leftNode;
+        focusNode.leftNode = leftChild.rightNode;
+        if (leftChild.rightNode != null) {
+            leftChild.rightNode.parentNode = focusNode;
+        }
+
+        leftChild.rightNode = focusNode;
+        focusNode.parentNode = leftChild;
+        leftChild.parentNode = parentNode;
+
+        if (parentNode != null) {
+            if (parentNode.leftNode == focusNode) {
+                parentNode.leftNode = leftChild;
+            } else {
+                parentNode.rightNode = leftChild;
+            }
+        }
+    }
+
+    public Node getRoot() {
+        Node firstNode = getMin();
+        while (firstNode.parentNode != null) {
+            firstNode = firstNode.parentNode;
+        }
+
+        return firstNode;
+    }
+
+
     public void printAll(boolean reversed) {
         // reversed - from min to max
         // normal - max to min

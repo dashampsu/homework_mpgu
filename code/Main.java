@@ -4,7 +4,7 @@ import BinarySearchTree.Utils.*;
 public class Main {
 
     public static void main(String[] args) {
-        BinarySearchTree tree = new BinarySearchTree("abcde");
+        BinarySearchTree tree = new BinarySearchTree("");
 //        tree.insert("abc");
 //        tree.insert("abcd");
 //        tree.insert("abcdefghijk");
@@ -17,14 +17,24 @@ public class Main {
 //        tree.insert("abcdefghijklmno");
 //        tree.insert("abcdefghijklmnopqr");
 
+//        tree.insert("ab");
+//        tree.insert("a");
+//        tree.insert("abcd");
+//        tree.insert("abc");
+//        tree.insert("abcdef");
+//        tree.insert("abcde");
+//        tree.insert("abcdefg");
+
+        tree.insert("abcde");
+        tree.insert("abcdef");
+        tree.insert("abc");
         tree.insert("abcd");
         tree.insert("ab");
-        tree.insert("abc");
-        tree.insert("a");
 
+        System.out.println(TreePrinter.getTreeDisplay(tree.getRoot()));
 
-        System.out.println(TreePrinter.getTreeDisplay(tree.search("abcde")));
+        tree.rightRotate(tree.search("abcde"));
 
-        System.out.println(tree.search("abcde").getBalance());
+        System.out.println(TreePrinter.getTreeDisplay(tree.getRoot()));
     }
 }
