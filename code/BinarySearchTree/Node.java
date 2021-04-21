@@ -39,26 +39,24 @@ public class Node {
 
     public int getHeight() {
         if (leftNode == null & rightNode == null) {
-            // if the node has no children
+            // node has no children
 
-            return -1;
+            return 0;
+        }
+
+        if (leftNode != null & rightNode == null) {
+            // node has left child
+
+            return leftNode.getHeight() + 1;
         }
 
         if (leftNode == null & rightNode != null) {
-            // if the node only has one child (right one)
+            // node has right child
 
-            return 0;
-        }
-
-        else if (leftNode != null & rightNode == null) {
-            // if the node only has one child (left one)
-
-            return 0;
+            return rightNode.getHeight() + 1;
         }
 
         if (leftNode != null & rightNode != null) {
-            // if the node has 2 children
-
             return Math.max(leftNode.getHeight(), rightNode.getHeight()) + 1;
         }
 
@@ -66,6 +64,28 @@ public class Node {
     }
 
     public int getBalance() {
-        return leftNode.getHeight() - rightNode.getHeight();
+        // 1 - left heavy
+        // 0 - even
+        // -1 - right heavy
+
+        int leftHeight;
+        int rightHeight;
+
+        if (leftNode != null) {
+            // to prevent NullPointerException
+
+            leftHeight = leftNode.getHeight();
+        } else {
+            leftHeight = -1;
+        }
+
+        if (rightNode != null) {
+            rightHeight = rightNode.getHeight();
+        } else {
+            rightHeight = -1;
+        }
+
+
+        return leftHeight - rightHeight;
     }
 }
