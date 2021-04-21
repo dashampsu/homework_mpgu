@@ -222,7 +222,7 @@ public class BinarySearchTree {
         return count;
     }
 
-    public void rightRotate(Node focusNode) {
+    public void rotateRight(Node focusNode) {
         Node parentNode = focusNode.parentNode;
         Node leftChild = focusNode.leftNode;
         focusNode.leftNode = leftChild.rightNode;
@@ -239,6 +239,28 @@ public class BinarySearchTree {
                 parentNode.leftNode = leftChild;
             } else {
                 parentNode.rightNode = leftChild;
+            }
+        }
+    }
+
+    public void rotateLeft(Node focusNode) {
+        Node parentNode = focusNode.parentNode;
+        Node rightChild = focusNode.rightNode;
+        focusNode.rightNode = rightChild.leftNode;
+
+        if (rightChild.rightNode != null) {
+            rightChild.rightNode.parentNode = focusNode;
+        }
+
+        rightChild.leftNode = focusNode;
+        focusNode.parentNode = rightChild;
+        rightChild.parentNode = parentNode;
+
+        if (parentNode != null) {
+            if (parentNode.leftNode == focusNode) {
+                parentNode.leftNode = rightChild;
+            } else {
+                parentNode.rightNode = rightChild;
             }
         }
     }

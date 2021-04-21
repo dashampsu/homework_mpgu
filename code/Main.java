@@ -32,9 +32,9 @@ public class Main {
         tree.insert("ab");
 
         System.out.println(TreePrinter.getTreeDisplay(tree.getRoot()));
-
-        tree.rightRotate(tree.search("abcde"));
-
+        tree.rotateRight(tree.search("abcde"));
+        System.out.println(TreePrinter.getTreeDisplay(tree.getRoot()));
+        tree.rotateLeft(tree.search("abc"));
         System.out.println(TreePrinter.getTreeDisplay(tree.getRoot()));
     }
 }
