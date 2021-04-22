@@ -273,7 +273,7 @@ public class BinarySearchTree {
 
     public void rotateLeftRight(Node focusNode) {
         focusNode.leftNode = rotateLeft(focusNode.leftNode);
-        rotateRight(focusNode);
+        focusNode = rotateRight(focusNode);
     }
 
     public void rotateRightLeft(Node focusNode) {
