@@ -1,5 +1,7 @@
 package BinarySearchTree;
 
+import java.util.Objects;
+
 public class BinarySearchTree {
     public Node root;
 
@@ -18,10 +20,7 @@ public class BinarySearchTree {
             root = new Node(key);
             return;
         }
-
-        Node newNode = insertRec(key, root);
-        assert newNode != null;
-        balance(newNode.parentNode);
+        balance(Objects.requireNonNull(insertRec(key, root)).parentNode);
     }
 
     private static Node insertRec(String key, Node focusNode) {
