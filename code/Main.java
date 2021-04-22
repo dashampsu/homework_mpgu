@@ -5,7 +5,6 @@ public class Main {
 
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree();
-
         tree.insert("abcdefgh");
         tree.insert("abcdefghi");
         tree.insert("abcdef");
@@ -15,8 +14,6 @@ public class Main {
         tree.insert("abc");
         tree.insert("ab");
         tree.insert("a");
-
-
         System.out.println(TreePrinter.getTreeDisplay(tree.root));
     }
 }

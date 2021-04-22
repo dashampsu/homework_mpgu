@@ -280,7 +280,6 @@ public class BinarySearchTreeTests {
         tree.insert("a");
 
         boolean actual = true;
-
         Node first = tree.getMin();
 
         while (first != null) {
