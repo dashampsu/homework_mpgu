@@ -7,14 +7,17 @@ public class BinarySearchTree {
 
     public static final String not_found = "The item is not found";
 
+    // user
     public BinarySearchTree() {
         root = new Node();
     }
 
+    // user
     public BinarySearchTree(String key) {
         root = new Node(key);
     }
 
+    //user
     public void insert(String key) {
         if (root.key == null) {
             root = new Node(key);
@@ -55,6 +58,7 @@ public class BinarySearchTree {
         return null;
     }
 
+    // user
     public void delete(String key) {
         Node focusNode = search(key);
         if (focusNode == null) {
@@ -113,7 +117,7 @@ public class BinarySearchTree {
         }
     }
 
-    public Node rotateRight(Node focusNode) {
+    private Node rotateRight(Node focusNode) {
         Node parentNode = focusNode.parentNode;
         Node leftChild = focusNode.leftNode;
         focusNode.leftNode = leftChild.rightNode;
@@ -137,7 +141,7 @@ public class BinarySearchTree {
         return leftChild;
     }
 
-    public Node rotateLeft(Node focusNode) {
+    private Node rotateLeft(Node focusNode) {
         Node parentNode = focusNode.parentNode;
         Node rightChild = focusNode.rightNode;
         focusNode.rightNode = rightChild.leftNode;
@@ -162,16 +166,17 @@ public class BinarySearchTree {
         return rightChild;
     }
 
-    public void rotateLeftRight(Node focusNode) {
+    private void rotateLeftRight(Node focusNode) {
         focusNode.leftNode = rotateLeft(focusNode.leftNode);
         focusNode = rotateRight(focusNode);
     }
 
-    public void rotateRightLeft(Node focusNode) {
+    private void rotateRightLeft(Node focusNode) {
         focusNode.rightNode = rotateRight(focusNode.rightNode);
         focusNode = rotateLeft(focusNode);
     }
 
+    // tests
     public void balance(Node focusNode) {
         while (focusNode != null) {
 
@@ -207,6 +212,7 @@ public class BinarySearchTree {
         }
     }
 
+    // user
     public Node search(String key) {
         return searchRec(key, root);
     }
@@ -234,6 +240,7 @@ public class BinarySearchTree {
         return null;
     }
 
+    // user
     public Node getMin() {
         Node focusNode = root;
         while (nodeExists(focusNode, "left")) {
@@ -243,6 +250,7 @@ public class BinarySearchTree {
         return focusNode;
     }
 
+    // user
     public Node getMax() {
         Node focusNode = root;
         while (nodeExists(focusNode, "right")) {
@@ -252,6 +260,7 @@ public class BinarySearchTree {
         return focusNode;
     }
 
+    // tests
     public Node getSuccessor(Node focusNode) {
         return getSuccessorRec(focusNode);
     }
@@ -275,10 +284,12 @@ public class BinarySearchTree {
                     focusNode = focusNodeParent;
                 }
             }
+
             return null;
         }
     }
 
+    // tests
     public Node getPredecessor(Node focusNode) {
         return getPredecessorRec(focusNode);
     }
@@ -367,6 +378,7 @@ public class BinarySearchTree {
         return firstNode;
     }
 
+    // dev
     public void printAll(boolean reversed) {
         // reversed - from min to max
         // normal - max to min

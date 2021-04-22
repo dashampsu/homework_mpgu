@@ -264,4 +264,37 @@ public class BinarySearchTreeTests {
         String actual = tree.getSuccessor(tree.search("a")).getKey();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void isAVLtree_true() {
+
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.insert("abcdefgh");
+        tree.insert("abcdefghi");
+        tree.insert("abcdef");
+        tree.insert("abcdefg");
+        tree.insert("abcd");
+        tree.insert("abcde");
+        tree.insert("abc");
+        tree.insert("ab");
+        tree.insert("a");
+
+        boolean actual = true;
+
+        Node first = tree.getMin();
+
+        while (first != null) {
+
+            int balance = first.getBalance();
+
+            if (balance < - 1 || balance > 1) {
+                actual = false;
+            }
+
+            first = tree.getSuccessor(first);
+        }
+
+        boolean expected = true;
+        assertEquals(expected, actual);
+    }
 }
