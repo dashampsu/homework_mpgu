@@ -25,12 +25,12 @@ public class Main {
 //        tree.insert("abcde");
 //        tree.insert("abcdefg");
 
-        tree.insert("abc");
         tree.insert("a");
+        tree.insert("abc");
         tree.insert("ab");
 
-        System.out.println(TreePrinter.getTreeDisplay(tree.search("abc")));
-        tree.rotateLeftRight(tree.search("abc"));
+        System.out.println(TreePrinter.getTreeDisplay(tree.search("a")));
+        tree.rotateRightLeft(tree.search("a"));
         System.out.println(TreePrinter.getTreeDisplay(tree.getRoot()));
     }
 }
