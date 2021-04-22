@@ -50,108 +50,6 @@ public class BinarySearchTree {
         }
     }
 
-    public Node search(String key) {
-        return searchRec(key, root);
-    }
-
-    private static Node searchRec(String key, Node focusNode) {
-        if (focusNode == null) {
-            // if last node and not found
-            return null;
-        }
-
-        if (key.equals(focusNode.key)) {
-            // if node is found
-            return focusNode;
-        }
-
-        // if node is not found
-
-        if (key.compareTo(focusNode.key) > 0) {
-            return searchRec(key, focusNode.rightNode);
-        }
-
-        else if (key.compareTo(focusNode.key) < 0) {
-            return searchRec(key, focusNode.leftNode);
-        }
-        return null;
-    }
-
-    public Node getMin() {
-        Node focusNode = root;
-        while (nodeExists(focusNode, "left")) {
-            focusNode = focusNode.leftNode;
-        }
-
-        return focusNode;
-    }
-
-    public Node getMax() {
-        Node focusNode = root;
-        while (nodeExists(focusNode, "right")) {
-            focusNode = focusNode.rightNode;
-        }
-
-        return focusNode;
-    }
-
-    public Node getPredecessor(Node focusNode) {
-        return getPredecessorRec(focusNode);
-    }
-
-    private static Node getPredecessorRec(Node focusNode) {
-        if (nodeExists(focusNode, "left")) {
-            focusNode = focusNode.leftNode;
-            while (nodeExists(focusNode, "right")) {
-                focusNode = focusNode.rightNode;
-            }
-            return focusNode;
-        } else {
-            // if left node doesn't exist
-
-            while (nodeExists(focusNode, "parent")) {
-                Node focusNodeParent = focusNode.parentNode;
-                if (focusNodeParent.rightNode == focusNode) {
-                    // if parent element has a right child
-                    // and this left child is the focus node
-
-                    return focusNodeParent;
-                } else {
-                    // if right node isn't the focus node
-                    focusNode = focusNodeParent;
-                }
-            }
-            return null;
-        }
-    }
-
-    public Node getSuccessor(Node focusNode) {
-        return getSuccessorRec(focusNode);
-    }
-
-    private static Node getSuccessorRec(Node focusNode) {
-        if (nodeExists(focusNode, "right")) {
-            focusNode = focusNode.rightNode;
-            while (focusNode.leftNode != null) {
-                focusNode = focusNode.leftNode;
-            }
-            return focusNode;
-        } else {
-            // if the right node doesn't exist
-            while (nodeExists(focusNode, "parent")) {
-                Node focusNodeParent = focusNode.parentNode;
-                if (focusNodeParent.leftNode == focusNode) {
-                    // if parent element has a left child
-                    // and this left child is the focus node
-                    return focusNodeParent;
-                } else {
-                    focusNode = focusNodeParent;
-                }
-            }
-            return null;
-        }
-    }
-
     public void delete(String key) {
         Node focusNode = search(key);
         if (focusNode == null) {
@@ -208,18 +106,6 @@ public class BinarySearchTree {
                 focusNodeParent.rightNode = null;
             }
         }
-    }
-
-    private static int countChildren(Node focusNode) {
-        int count = 0;
-        if (nodeExists(focusNode, "left")) {
-            count++;
-        }
-
-        if (nodeExists(focusNode, "right")) {
-            count++;
-        }
-        return count;
     }
 
     public Node rotateRight(Node focusNode) {
@@ -281,43 +167,106 @@ public class BinarySearchTree {
         focusNode = rotateLeft(focusNode);
     }
 
-    public Node getHighest() {
-        Node firstNode = getMin();
-        while (firstNode.parentNode != null) {
-            firstNode = firstNode.parentNode;
-        }
-
-        return firstNode;
+    public Node search(String key) {
+        return searchRec(key, root);
     }
 
-
-    public void printAll(boolean reversed) {
-        // reversed - from min to max
-        // normal - max to min
-
-        reversed = !reversed;
-
-        if (reversed) {
-            printAllRec(getMax(), reversed);
-        } else {
-            printAllRec(getMin(), reversed);
-        }
-    }
-
-    private static void printAllRec(Node focusNode, boolean reversed){
+    private static Node searchRec(String key, Node focusNode) {
         if (focusNode == null) {
-            return;
+            // if last node and not found
+            return null;
         }
 
-        System.out.println(focusNode.key);
+        if (key.equals(focusNode.key)) {
+            // if node is found
+            return focusNode;
+        }
 
-        Node nextNode;
-        if (reversed) {
-            nextNode = getPredecessorRec(focusNode);
+        // if node is not found
+
+        if (key.compareTo(focusNode.key) > 0) {
+            return searchRec(key, focusNode.rightNode);
+        }
+
+        else if (key.compareTo(focusNode.key) < 0) {
+            return searchRec(key, focusNode.leftNode);
+        }
+        return null;
+    }
+
+    public Node getMin() {
+        Node focusNode = root;
+        while (nodeExists(focusNode, "left")) {
+            focusNode = focusNode.leftNode;
+        }
+
+        return focusNode;
+    }
+
+    public Node getMax() {
+        Node focusNode = root;
+        while (nodeExists(focusNode, "right")) {
+            focusNode = focusNode.rightNode;
+        }
+
+        return focusNode;
+    }
+
+    public Node getSuccessor(Node focusNode) {
+        return getSuccessorRec(focusNode);
+    }
+
+    private static Node getSuccessorRec(Node focusNode) {
+        if (nodeExists(focusNode, "right")) {
+            focusNode = focusNode.rightNode;
+            while (focusNode.leftNode != null) {
+                focusNode = focusNode.leftNode;
+            }
+            return focusNode;
         } else {
-            nextNode = getSuccessorRec(focusNode);
+            // if the right node doesn't exist
+            while (nodeExists(focusNode, "parent")) {
+                Node focusNodeParent = focusNode.parentNode;
+                if (focusNodeParent.leftNode == focusNode) {
+                    // if parent element has a left child
+                    // and this left child is the focus node
+                    return focusNodeParent;
+                } else {
+                    focusNode = focusNodeParent;
+                }
+            }
+            return null;
         }
-        printAllRec(nextNode, reversed);
+    }
+
+    public Node getPredecessor(Node focusNode) {
+        return getPredecessorRec(focusNode);
+    }
+
+    private static Node getPredecessorRec(Node focusNode) {
+        if (nodeExists(focusNode, "left")) {
+            focusNode = focusNode.leftNode;
+            while (nodeExists(focusNode, "right")) {
+                focusNode = focusNode.rightNode;
+            }
+            return focusNode;
+        } else {
+            // if left node doesn't exist
+
+            while (nodeExists(focusNode, "parent")) {
+                Node focusNodeParent = focusNode.parentNode;
+                if (focusNodeParent.rightNode == focusNode) {
+                    // if parent element has a right child
+                    // and this left child is the focus node
+
+                    return focusNodeParent;
+                } else {
+                    // if right node isn't the focus node
+                    focusNode = focusNodeParent;
+                }
+            }
+            return null;
+        }
     }
 
     private static boolean nodeExists(Node focusNode, String whatNode) {
@@ -355,5 +304,55 @@ public class BinarySearchTree {
             }
             default -> throw new RuntimeException("wrong node name");
         }
+    }
+
+    private static int countChildren(Node focusNode) {
+        int count = 0;
+        if (nodeExists(focusNode, "left")) {
+            count++;
+        }
+
+        if (nodeExists(focusNode, "right")) {
+            count++;
+        }
+        return count;
+    }
+
+    private Node getHighest() {
+        Node firstNode = getMin();
+        while (firstNode.parentNode != null) {
+            firstNode = firstNode.parentNode;
+        }
+
+        return firstNode;
+    }
+
+    public void printAll(boolean reversed) {
+        // reversed - from min to max
+        // normal - max to min
+
+        reversed = !reversed;
+
+        if (reversed) {
+            printAllRec(getMax(), reversed);
+        } else {
+            printAllRec(getMin(), reversed);
+        }
+    }
+
+    private static void printAllRec(Node focusNode, boolean reversed){
+        if (focusNode == null) {
+            return;
+        }
+
+        System.out.println(focusNode.key);
+
+        Node nextNode;
+        if (reversed) {
+            nextNode = getPredecessorRec(focusNode);
+        } else {
+            nextNode = getSuccessorRec(focusNode);
+        }
+        printAllRec(nextNode, reversed);
     }
 }
