@@ -265,6 +265,11 @@ public class BinarySearchTree {
         }
     }
 
+    public void rotateLeftRight(Node focusNode) {
+        rotateLeft(focusNode.leftNode);
+        rotateRight(focusNode);
+    }
+
     public Node getRoot() {
         Node firstNode = getMin();
         while (firstNode.parentNode != null) {
