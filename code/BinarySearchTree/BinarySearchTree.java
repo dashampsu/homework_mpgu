@@ -1,7 +1,7 @@
 package BinarySearchTree;
 
 public class BinarySearchTree {
-    Node root;
+    public Node root;
 
     public static final String not_found = "The item is not found";
 
@@ -222,12 +222,12 @@ public class BinarySearchTree {
         return count;
     }
 
-    public void rotateRight(Node focusNode) {
+    public Node rotateRight(Node focusNode) {
         Node parentNode = focusNode.parentNode;
         Node leftChild = focusNode.leftNode;
         focusNode.leftNode = leftChild.rightNode;
         if (leftChild.rightNode != null) {
-            leftChild.rightNode.parentNode = focusNode;
+            leftChild.rightNode.parentNode = leftChild;
         }
 
         leftChild.rightNode = focusNode;
@@ -241,15 +241,18 @@ public class BinarySearchTree {
                 parentNode.rightNode = leftChild;
             }
         }
+
+        root = getHighest();
+        return leftChild;
     }
 
-    public void rotateLeft(Node focusNode) {
+    public Node rotateLeft(Node focusNode) {
         Node parentNode = focusNode.parentNode;
         Node rightChild = focusNode.rightNode;
         focusNode.rightNode = rightChild.leftNode;
 
         if (rightChild.rightNode != null) {
-            rightChild.rightNode.parentNode = focusNode;
+            rightChild.rightNode.parentNode = rightChild;
         }
 
         rightChild.leftNode = focusNode;
@@ -263,19 +266,22 @@ public class BinarySearchTree {
                 parentNode.rightNode = rightChild;
             }
         }
+
+        root = getHighest();
+        return rightChild;
     }
 
     public void rotateLeftRight(Node focusNode) {
-        rotateLeft(focusNode.leftNode);
+        focusNode.leftNode = rotateLeft(focusNode.leftNode);
         rotateRight(focusNode);
     }
 
     public void rotateRightLeft(Node focusNode) {
-        rotateRight(focusNode.rightNode);
-        rotateLeft(focusNode);
+        focusNode.rightNode = rotateRight(focusNode.rightNode);
+        focusNode = rotateLeft(focusNode);
     }
 
-    public Node getRoot() {
+    public Node getHighest() {
         Node firstNode = getMin();
         while (firstNode.parentNode != null) {
             firstNode = firstNode.parentNode;

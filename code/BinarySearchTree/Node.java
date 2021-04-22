@@ -24,6 +24,12 @@ public class Node {
         return key;
     }
 
+    public boolean isEmpty() {
+        if (key == null) {
+            return true;
+        } else return key.equals("");
+    }
+
     public Node getLeft() {
         return leftNode;
     }
