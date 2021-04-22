@@ -18,10 +18,13 @@ public class BinarySearchTree {
             root = new Node(key);
             return;
         }
-        insertRec(key, root);
+
+        Node newNode = insertRec(key, root);
+        assert newNode != null;
+        balance(newNode.parentNode);
     }
 
-    private static void insertRec(String key, Node focusNode) {
+    private static Node insertRec(String key, Node focusNode) {
         if (key.compareTo(focusNode.key) > 0) {
             // if the node is to be placed on the right
             // (if new key is greater than the focusNode key)
@@ -29,25 +32,28 @@ public class BinarySearchTree {
             if (focusNode.rightNode == null) {
                 focusNode.rightNode = new Node(key);
                 focusNode.rightNode.parentNode = focusNode;
-                return;
+                return focusNode.rightNode;
             } else {
                 // if the right child does exist
-                insertRec(key, focusNode.rightNode);
+                return insertRec(key, focusNode.rightNode);
             }
         }
 
-        if (key.compareTo(focusNode.key) <= 0) {
+        else if (key.compareTo(focusNode.key) <= 0) {
             // if the node is to be placed on the left
             // (if new key is lesser than the focusNode key)
 
             if (focusNode.leftNode == null) {
                 focusNode.leftNode = new Node(key);
                 focusNode.leftNode.parentNode = focusNode;
+                return focusNode.leftNode;
             } else {
                 // if the left child does exist
-                insertRec(key, focusNode.leftNode);
+                return insertRec(key, focusNode.leftNode);
             }
         }
+
+        return null;
     }
 
     public void delete(String key) {
@@ -165,6 +171,41 @@ public class BinarySearchTree {
     public void rotateRightLeft(Node focusNode) {
         focusNode.rightNode = rotateRight(focusNode.rightNode);
         focusNode = rotateLeft(focusNode);
+    }
+
+    public void balance(Node focusNode) {
+        while (focusNode != null) {
+
+            if (focusNode.getBalance() > 1) {
+                // if left-heavy
+
+                if (focusNode.leftNode.getBalance() > 0) {
+                    // left-left case
+
+                    focusNode = rotateRight(focusNode);
+                } else {
+                    // left-right case
+
+                    rotateLeftRight(focusNode);
+                }
+            }
+
+            else if (focusNode.getBalance() < -1) {
+                // if right-heavy
+
+                if (focusNode.rightNode.getBalance() < 0) {
+                    // right-right case
+
+                    focusNode = rotateRight(focusNode);
+                } else {
+                    // right-left case
+
+                    rotateRightLeft(focusNode);
+                }
+            }
+
+            focusNode = focusNode.parentNode;
+        }
     }
 
     public Node search(String key) {
