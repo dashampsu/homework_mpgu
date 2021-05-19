@@ -7,5 +7,6 @@ public class Main {
 
         table.insert(9);
         table.insert(18);
+        table.printAll();
     }
 }
