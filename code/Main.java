@@ -22,6 +22,6 @@ public class Main {
         tree.delete(tree.search("a"));
         System.out.println("deleted");
         System.out.println(TreePrinter.getTreeDisplay(tree.root));
-        System.out.println(tree.search("abcdefg").getBalance());
+        System.out.println(tree.search("abcdefg").getBalance());\
     }
 }
