@@ -1,23 +1,7 @@
 package HashTable;
 import DoublyLinkedLists.*;
 
-class TableObject {
-    int key;
-    public int data;
-
-    public TableObject() {
-
-    }
-
-    public TableObject(int key, int data) {
-        this.key = key;
-        this.data = data;
-    }
-
-    public int getData() {
-        return data;
-    }
-}
+import javax.swing.text.TabableView;
 
 public class ListHashTable {
     int TABLE_SIZE = 9;
@@ -33,6 +17,14 @@ public class ListHashTable {
         int keyIndex = data % TABLE_SIZE;
         TableObject newObject = new TableObject(keyIndex, data);
         table[keyIndex].append(newObject);
+    }
+
+    public void remove(int key) {
+        table[key] = new DoubleLinkedList();
+    }
+
+    public DoubleLinkedList<TableObject> get(int key) {
+        return table[key];
     }
 
     public void printAll() {
