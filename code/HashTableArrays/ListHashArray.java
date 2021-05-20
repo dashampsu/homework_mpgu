@@ -4,9 +4,15 @@ import DynamicArrays.*;
 
 public class ListHashArray {
     int TABLE_SIZE = 9;
-    DynamicArray[] table = new DynamicArray[TABLE_SIZE];
+    DynamicArray[] table;
 
-    public ListHashArray() {
+    protected String outOfBoundsException = "The key is out of bounds.";
+
+    public ListHashArray(int size) {
+
+        TABLE_SIZE = size;
+        table = new DynamicArray[TABLE_SIZE];
+
         for (int i = 0; i < TABLE_SIZE; i++) {
             table[i] = new DynamicArray();
         }
@@ -19,10 +25,20 @@ public class ListHashArray {
     }
 
     public void remove(int key) {
+
+        if (key > TABLE_SIZE || key < 0) {
+            throw new RuntimeException(outOfBoundsException);
+        }
+
         table[key] = new DynamicArray();
     }
 
     public DynamicArray<HashTable.TableObject> get(int key) {
+
+        if (key > TABLE_SIZE || key < 0) {
+            throw new RuntimeException(outOfBoundsException);
+        }
+
         return table[key];
     }
 
