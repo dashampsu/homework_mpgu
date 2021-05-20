@@ -2,10 +2,12 @@ package HashTable;
 import DoublyLinkedLists.*;
 
 public class ListHashTable {
-    int TABLE_SIZE = 9;
-    DoubleLinkedList[] table = new DoubleLinkedList[TABLE_SIZE];
+    int TABLE_SIZE;
+    DoubleLinkedList[] table;
 
-    public ListHashTable() {
+    public ListHashTable(int size) {
+        TABLE_SIZE = size;
+        table = new DoubleLinkedList[TABLE_SIZE];
         for (int i = 0; i < TABLE_SIZE; i++) {
             table[i] = new DoubleLinkedList();
         }
@@ -21,7 +23,7 @@ public class ListHashTable {
         table[key] = new DoubleLinkedList();
     }
 
-    public DoubleLinkedList<TableObject> get(int key) {
+    public DoubleLinkedList<TableObject> getByKey(int key) {
         return table[key];
     }
 
