@@ -10,5 +10,6 @@ public class Main {
         table.printAll();
         table.remove(0);
         table.printAll();
+        System.out.println(table.get(0).isEmpty());
     }
 }

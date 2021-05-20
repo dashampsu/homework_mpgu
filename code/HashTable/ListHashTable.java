@@ -5,6 +5,8 @@ public class ListHashTable {
     int TABLE_SIZE;
     DoubleLinkedList[] table;
 
+    protected String outOfBoundsException = "The key is out of bounds.";
+
     public ListHashTable(int size) {
         TABLE_SIZE = size;
         table = new DoubleLinkedList[TABLE_SIZE];
@@ -20,10 +22,20 @@ public class ListHashTable {
     }
 
     public void remove(int key) {
+
+        if (key > TABLE_SIZE || key < 0) {
+            throw new RuntimeException(outOfBoundsException);
+        }
+
         table[key] = new DoubleLinkedList();
     }
 
-    public DoubleLinkedList<TableObject> getByKey(int key) {
+    public DoubleLinkedList<TableObject> get(int key) {
+
+        if (key > TABLE_SIZE || key < 0) {
+            throw new RuntimeException(outOfBoundsException);
+        }
+
         return table[key];
     }
 
