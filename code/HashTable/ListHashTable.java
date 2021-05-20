@@ -1,8 +1,6 @@
 package HashTable;
 import DoublyLinkedLists.*;
 
-import javax.swing.text.TabableView;
-
 public class ListHashTable {
     int TABLE_SIZE = 9;
     DoubleLinkedList[] table = new DoubleLinkedList[TABLE_SIZE];
