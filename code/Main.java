@@ -1,15 +1,16 @@
-import HashTable.*;
+import Graphs.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        ListHashTable table = new ListHashTable(9);
-
-        table.insert(9);
-        table.insert(18);
-        table.printAll();
-        table.remove(0);
-        table.printAll();
-        System.out.println(table.get(0).isEmpty());
+        Graph graph = new Graph(10);
+        graph.add(1, 2);
+        graph.add(1, 4);
+        graph.add(1, 5);
+        graph.add(7, 3);
+        graph.printAll();
+        graph.delete(7, 3);
+        System.out.println();
+        graph.printAll();
     }
 }

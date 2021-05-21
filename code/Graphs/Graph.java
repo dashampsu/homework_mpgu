@@ -10,7 +10,7 @@ public class Graph {
         graph = new DynamicArray<DynamicArray<Integer>>();
 
         for (int i = 0; i < nodes; i++) {
-            graph.set(i, new DynamicArray<Integer>());
+            graph.add(new DynamicArray<Integer>());
         }
     }
 
@@ -39,5 +39,12 @@ public class Graph {
         }
     }
 
-
+    public void printAll() {
+        for (int i = 0; i < nodes; i++) {
+            System.out.println("Node " + i);
+            for (int f = 0; f < graph.get(i).getsize(); f++) {
+                System.out.println(" -> " + graph.get(i).get(f));
+            }
+        }
+    }
 }
