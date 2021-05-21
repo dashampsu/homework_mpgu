@@ -42,33 +42,15 @@ public class HashTableTests {
     }
 
     @Test
-    public void getElement_wrongIndex_ThrowsException() {
-        ListHashTable table = new ListHashTable(9);
-        String error_message = table.outOfBoundsException;
-
-        assertThrows(RuntimeException.class, () -> table.get(20), error_message);
-        assertThrows(RuntimeException.class, () -> table.get(-2), error_message);
-    }
-
-    @Test
     public void remove_positive() {
         ListHashTable table = new ListHashTable(9);
         table.insert(9);
         table.insert(18);
 
-        table.remove(0);
+        table.remove(18);
 
         boolean expected = true;
-        boolean actual = table.get(0).isEmpty();
+        boolean actual = table.get(0).contains(new TableObject(18 % 9, 18));
         assertEquals(expected, actual);
-    }
-
-    @Test
-    public void remove_outofBoundsException() {
-        ListHashTable table = new ListHashTable(9);
-        String error_message = table.outOfBoundsException;
-
-        assertThrows(RuntimeException.class, () -> table.remove(20), error_message);
-        assertThrows(RuntimeException.class, () -> table.remove(-2), error_message);
     }
 }

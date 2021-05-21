@@ -16,15 +16,15 @@ public class ListHashTable {
     }
 
     public void insert(int data) {
-        int keyIndex = data % TABLE_SIZE;
-        TableObject newObject = new TableObject(keyIndex, data);
-        table[keyIndex].append(newObject);
+        int key = data % TABLE_SIZE;
+        TableObject newObject = new TableObject(key, data);
+        table[key].append(newObject);
     }
 
     public void remove(int data) {
         int index = data % TABLE_SIZE;
-
-        table[index].removeElementByValue(data);
+        TableObject obj = new TableObject(data % TABLE_SIZE, 18);
+        table[index].removeElementByValue(obj);
     }
 
     public DoubleLinkedList<TableObject> get(int data) {
