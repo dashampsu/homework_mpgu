@@ -1,10 +1,9 @@
 package HashTableArrays;
-import HashTable.TableObject;
 import DynamicArrays.*;
 
 public class ListHashArray {
     int TABLE_SIZE = 9;
-    DynamicArray[] table;
+    DynamicArray<TableObject>[] table;
 
     protected String outOfBoundsException = "The key is out of bounds.";
 
@@ -14,32 +13,28 @@ public class ListHashArray {
         table = new DynamicArray[TABLE_SIZE];
 
         for (int i = 0; i < TABLE_SIZE; i++) {
-            table[i] = new DynamicArray();
+            table[i] = new DynamicArray<TableObject>();
         }
     }
 
     public void insert(int data) {
         int keyIndex = data % TABLE_SIZE;
-        HashTable.TableObject newObject = new HashTable.TableObject(keyIndex, data);
+        TableObject newObject = new TableObject(keyIndex, data);
         table[keyIndex].add(newObject);
     }
 
-    public void remove(int key) {
-
-        if (key > TABLE_SIZE || key < 0) {
-            throw new RuntimeException(outOfBoundsException);
+    public void remove(int data) {
+        int index = data % TABLE_SIZE;
+        for (int i = 0; i < table[index].getsize(); i++) {
+            if (data == table[index].get(i).data) {
+                table[index].remove(i);
+            }
         }
-
-        table[key] = new DynamicArray();
     }
 
-    public DynamicArray<HashTable.TableObject> get(int key) {
-
-        if (key > TABLE_SIZE || key < 0) {
-            throw new RuntimeException(outOfBoundsException);
-        }
-
-        return table[key];
+    public DynamicArray<TableObject> get(int data) {
+        int index = data % TABLE_SIZE;
+        return table[index];
     }
 
     public void printAll() {

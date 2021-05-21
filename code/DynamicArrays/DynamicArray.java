@@ -71,7 +71,8 @@ public class DynamicArray<T> {
             if (list[i] == value) { return i; }
         }
 
-        throw new RuntimeException(elementNotFoundError);
+        return -1;
+//        throw new RuntimeException(elementNotFoundError);
     }
 
     public int findLast(T value) {

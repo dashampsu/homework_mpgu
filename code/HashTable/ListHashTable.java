@@ -23,8 +23,6 @@ public class ListHashTable {
 
     public void remove(int data) {
         int index = data % TABLE_SIZE;
-        TableObject obj = new TableObject(data % TABLE_SIZE, 18);
-
         for (int i = 0; i < table[index].getSize(); i++) {
             if (data == table[index].getValueByIndex(i).data) {
                 table[index].removeElement(i);

@@ -42,34 +42,16 @@ public class ListHashArrayTests {
     }
 
     @Test
-    public void getElement_wrongIndex_ThrowsException() {
-        ListHashArray table = new ListHashArray(9);
-        String error_message = table.outOfBoundsException;
-
-        assertThrows(RuntimeException.class, () -> table.get(20), error_message);
-        assertThrows(RuntimeException.class, () -> table.get(-2), error_message);
-    }
-
-    @Test
     public void remove_positive() {
         ListHashArray table = new ListHashArray(9);
         table.insert(9);
         table.insert(18);
 
-        table.remove(0);
+        table.remove(18);
 
-        int expected = 0;
-        int actual = table.get(0).getsize();
+        int expected = -1;
+        int actual = table.get(0).findFirst(new TableObject(18 % 9, 18));
         assertEquals(expected, actual);
-    }
-
-    @Test
-    public void remove_outofBoundsException() {
-        ListHashArray table = new ListHashArray(9);
-        String error_message = table.outOfBoundsException;
-
-        assertThrows(RuntimeException.class, () -> table.remove(20), error_message);
-        assertThrows(RuntimeException.class, () -> table.remove(-2), error_message);
     }
 }
 
