@@ -49,7 +49,7 @@ public class HashTableTests {
 
         table.remove(18);
 
-        boolean expected = true;
+        boolean expected = false;
         boolean actual = table.get(0).contains(new TableObject(18 % 9, 18));
         assertEquals(expected, actual);
     }

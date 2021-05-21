@@ -3,7 +3,7 @@ import DoublyLinkedLists.*;
 
 public class ListHashTable {
     int TABLE_SIZE;
-    DoubleLinkedList[] table;
+    DoubleLinkedList<TableObject>[] table;
 
     protected String outOfBoundsException = "The key is out of bounds.";
 
@@ -11,7 +11,7 @@ public class ListHashTable {
         TABLE_SIZE = size;
         table = new DoubleLinkedList[TABLE_SIZE];
         for (int i = 0; i < TABLE_SIZE; i++) {
-            table[i] = new DoubleLinkedList();
+            table[i] = new DoubleLinkedList<TableObject>();
         }
     }
 
@@ -24,7 +24,12 @@ public class ListHashTable {
     public void remove(int data) {
         int index = data % TABLE_SIZE;
         TableObject obj = new TableObject(data % TABLE_SIZE, 18);
-        table[index].removeElementByValue(obj);
+
+        for (int i = 0; i < table[index].getSize(); i++) {
+            if (data == table[index].getValueByIndex(i).data) {
+                table[index].removeElement(i);
+            }
+        }
     }
 
     public DoubleLinkedList<TableObject> get(int data) {
