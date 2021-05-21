@@ -21,22 +21,15 @@ public class ListHashTable {
         table[keyIndex].append(newObject);
     }
 
-    public void remove(int key) {
+    public void remove(int data) {
+        int index = data % TABLE_SIZE;
 
-        if (key > TABLE_SIZE || key < 0) {
-            throw new RuntimeException(outOfBoundsException);
-        }
-
-        table[key] = new DoubleLinkedList();
+        table[index].removeElementByValue(data);
     }
 
-    public DoubleLinkedList<TableObject> get(int key) {
-
-        if (key > TABLE_SIZE || key < 0) {
-            throw new RuntimeException(outOfBoundsException);
-        }
-
-        return table[key];
+    public DoubleLinkedList<TableObject> get(int data) {
+        int index = data % TABLE_SIZE;
+        return table[index];
     }
 
     public void printAll() {
