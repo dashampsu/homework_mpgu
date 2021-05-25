@@ -27,7 +27,7 @@ public class ListHashArrayTests {
         table.insert(18);
 
         int expected = 18;
-        int actual = table.get(0).data;
+        int actual = table.get(18).data;
         assertEquals(expected, actual);
     }
 
