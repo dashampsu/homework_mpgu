@@ -37,7 +37,7 @@ public class ListHashArrayTests {
         table.insert(9);
 
         int expected = 9;
-        int actual = table.get(0).data;
+        int actual = table.get(9).data;
         assertEquals(expected, actual);
     }
 
@@ -50,7 +50,7 @@ public class ListHashArrayTests {
         table.remove(18);
 
         Object expected = null;
-        Object actual = table.get(1);
+        Object actual = table.get(18);
         assertEquals(expected, actual);
     }
 }

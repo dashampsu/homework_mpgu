@@ -8,7 +8,7 @@ public class ListHashArray {
     public ListHashArray(int size) {
 
         TABLE_SIZE = size;
-        table = new DynamicArray<TableObject>();
+        table = new DynamicArray<TableObject>(TABLE_SIZE);
     }
 
     public void insert(int data) {
@@ -28,7 +28,16 @@ public class ListHashArray {
 
     public void remove(int data) {
         int index = data % TABLE_SIZE;
-        table.remove(index);
+        if (table.get(index).data == data) {
+            table.remove(index);
+        } else {
+            for (int i = index; i < table.getsize(); i++) {
+                if (table.get(i) != null && table.get(i).data == data) {
+                    table.remove(i);
+                    return;
+                }
+            }
+        }
     }
 
     public TableObject get(int data) {
@@ -37,7 +46,8 @@ public class ListHashArray {
             return table.get(index);
         } else {
             for (int i = 0; i < table.getsize(); i++) {
-                if (table.get(i).data == data) {
+
+                if (table.get(i) != null && table.get(i).data == data) {
                     return table.get(i);
                 }
             }
