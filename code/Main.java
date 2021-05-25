@@ -12,5 +12,7 @@ public class Main {
         graph.delete(7, 3);
         System.out.println();
         graph.printAll();
+        System.out.println();
+        graph.get(1).printAll();
     }
 }

@@ -14,6 +14,10 @@ public class Graph {
         }
     }
 
+    public DynamicArray<Integer> get(int id) {
+        return graph.get(id);
+    }
+
     public void add(int source, int destination) {
         graph.get(source).add(destination);
         graph.get(destination).add(source);
@@ -38,6 +42,7 @@ public class Graph {
             }
         }
     }
+
 
     public void printAll() {
         for (int i = 0; i < nodes; i++) {
