@@ -22,6 +22,8 @@ public class ListHashArray {
                 throw new RuntimeException("The table is full");
             }
         }
+
+        table.insert(keyIndex, newObject);
     }
 
     public void remove(int data) {
@@ -31,7 +33,16 @@ public class ListHashArray {
 
     public TableObject get(int data) {
         int index = data % TABLE_SIZE;
-        return table.get(index);
+        if (table.get(index).data == data) {
+            return table.get(index);
+        } else {
+            for (int i = 0; i < table.getsize(); i++) {
+                if (table.get(i).data == data) {
+                    return table.get(i);
+                }
+            }
+            return null;
+        }
     }
 
     public void printAll() {
