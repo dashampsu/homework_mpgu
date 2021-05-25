@@ -29,7 +29,7 @@ public class DynamicArray<T> {
 
     public T get(int index) {
         if (index < 0 || index > list.length) {
-            throw new RuntimeException(outOfBorderError);
+            return null;
         }
 
         return list[index];
